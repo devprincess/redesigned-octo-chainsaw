@@ -1,0 +1,26 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, productInfo: Product)
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+@if(isLoggedIn) {   
+     <div class="row">
+     	<h3>Information about the product</h3> @defining(productInfo.getIdcategory().toString()) {categoryId => 
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)'>Return to category}</a>
+     </div>
+     <div>
+     	<h1><p class="text-success">@productInfo.getName()</p></h1>
+     	<h3><p class="text-warning">Price (Euro):  @productInfo.getPrice()</p></h3>    		
+     	<p class="bg-info"> @productInfo.getDescription()</p>
+     </div>
+     } else {
+   	<div class="row">
+		<h3><a href="@routes.LoginController.login()">Session Timed out. Return to Log in</a></h3>
+	</div>
+   }
+}
+</div>
