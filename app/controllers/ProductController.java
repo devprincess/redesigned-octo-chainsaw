@@ -103,8 +103,6 @@ public class ProductController extends Controller{
 						//Increment this value since it is a new visit
 						productViews.nextCount();
 
-						System.out.println("Value of product views:"+productViews.get());
-
 						//update this value in the database for the next try (Use of Ebean ORM Method to update)
 						String updStatement = "update product set views = :views where id=:idproduct";
 						Update<Product> update = Ebean.createUpdate(Product.class, updStatement);
