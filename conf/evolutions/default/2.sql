@@ -38,21 +38,21 @@ INSERT INTO product(name, description, price, idcategory, views) VALUES ('Office
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Sofa','Contemporary design coordinates well with any environment',120.00, 4, 0);
 
 INSERT INTO stock(idproduct,quantity) VALUES (1,1);
-INSERT INTO stock(idproduct,quantity) VALUES (1,3);
-INSERT INTO stock(idproduct,quantity) VALUES (1,4);
-INSERT INTO stock(idproduct,quantity) VALUES (1,1);
+INSERT INTO stock(idproduct,quantity) VALUES (2,3);
+INSERT INTO stock(idproduct,quantity) VALUES (3,0);
+INSERT INTO stock(idproduct,quantity) VALUES (4,1);
 
-INSERT INTO stock(idproduct,quantity) VALUES (1,10);
-INSERT INTO stock(idproduct,quantity) VALUES (1,4);
-INSERT INTO stock(idproduct,quantity) VALUES (1,5);
+INSERT INTO stock(idproduct,quantity) VALUES (5,10);
+INSERT INTO stock(idproduct,quantity) VALUES (6,0);
+INSERT INTO stock(idproduct,quantity) VALUES (7,5);
 
-INSERT INTO stock(idproduct,quantity) VALUES (1,4);
-INSERT INTO stock(idproduct,quantity) VALUES (1,5);
-INSERT INTO stock(idproduct,quantity) VALUES (1,3);
+INSERT INTO stock(idproduct,quantity) VALUES (8,4);
+INSERT INTO stock(idproduct,quantity) VALUES (9,5);
+INSERT INTO stock(idproduct,quantity) VALUES (10,3);
 
-INSERT INTO stock(idproduct,quantity) VALUES (1,6);
-INSERT INTO stock(idproduct,quantity) VALUES (1,2);
-INSERT INTO stock(idproduct,quantity) VALUES (1,1);
+INSERT INTO stock(idproduct,quantity) VALUES (11,0);
+INSERT INTO stock(idproduct,quantity) VALUES (12,2);
+INSERT INTO stock(idproduct,quantity) VALUES (13,1);
 
 # --- !Downs
 

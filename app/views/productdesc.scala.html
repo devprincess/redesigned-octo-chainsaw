@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, productInfo: Product, count: Integer)
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, productInfo: Product, count: Integer, stock: Integer)
 
 @Main(page, isLoggedIn, userInfo) {
 <br>
@@ -17,8 +17,12 @@
      <div>
      <h3>
      	<p class="text-success">@productInfo.getName()</p>
-     	<p class="text-warning">Price (Euro):  @productInfo.getPrice()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" type="button" class="btn btn-danger">Add to shopping cart!</a> 	</p> 
-     		
+     	<p class="text-warning">Price (Euro):  @productInfo.getPrice()</p>
+     	@if(stock>0){ 
+     	<a href="#" type="button" class="btn btn-danger">Add to shopping cart!</a> 
+     	} else{
+     	<p class="text-danger">There are no items available in stock.<p>
+     	}	
      	<p class="bg-info"> @productInfo.getDescription()</p>
      </h3>
      </div>

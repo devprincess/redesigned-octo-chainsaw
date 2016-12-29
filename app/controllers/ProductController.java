@@ -2,6 +2,7 @@ package controllers;
 
 import static akka.pattern.Patterns.ask;
 
+import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
@@ -17,6 +18,7 @@ import akka.actor.ActorSystem;
 import akka.util.Timeout;
 import models.Category;
 import models.Product;
+import models.Stock;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -113,8 +115,15 @@ public class ProductController extends Controller{
 						//update the product object as well
 						product.setViews(productViews.get());
 
+						//get the number of items (stock) available for this product
+						Stock stock = Ebean.find(Stock.class)
+								.select("idproduct, quantity")
+								.where()
+								.eq("idproduct", product.getId())
+								.findList().get(0);
+
 						//Pass all the calculated values to the view in views package: productdesc.scala.html
-						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product, product.getViews()));
+						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product, product.getViews(), stock.getQuantity()));
 					}
 				}, ec.current());
 
