@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, categoryInfo: Category, products: List[Product])
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, categoryInfo: Category, products: List[Product], count: Integer)
 
 @Main(page, isLoggedIn, userInfo) {
 <br>
@@ -10,6 +10,7 @@
 @if(isLoggedIn) {     
      <div class="row">
      	<h3>Category: @categoryInfo.getName()</h3>
+     	<h3>(This category has been seen: @count times)</h3> 
   		<a href='@routes.LoginController.profile()'>Return to Initial Page</a>
      </div>
      

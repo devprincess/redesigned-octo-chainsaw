@@ -9,6 +9,7 @@ import java.util.function.Function;
 import javax.inject.Inject;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Update;
 
 import actors.CategoryActor;
 import actors.CategoryActorProtocol;
@@ -21,6 +22,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
+import services.AtomicCounter;
 
 public class CategoryController extends Controller{
 
@@ -28,8 +30,12 @@ public class CategoryController extends Controller{
 
 	@Inject HttpExecutionContext ec;
 
-	@Inject public CategoryController(ActorSystem system) {
-		categoryActor = system.actorOf(CategoryActor.props);
+	@Inject AtomicCounter categoryViews;
+
+	@Inject public CategoryController(ActorSystem system, AtomicCounter atomicCounter) {
+		this.categoryActor = system.actorOf(CategoryActor.props);
+		this.categoryViews= atomicCounter;
+
 	}
 
 	public CompletionStage<Result> getProductsByCategory(String idcategory) {
@@ -42,9 +48,15 @@ public class CategoryController extends Controller{
 					@Override
 					public Result apply(Object response) {
 						Category category = Category.class.cast(response);
-						//need to do a join query to send the products as well
 						List<Product> productList = Product.find.where().eq("idcategory", category.id).findList();
-						return ok(categorydesc.render("Category Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),category, productList));
+						categoryViews.set(category.getViews());
+						String updStatement = "update category set views = :views where id=:idcategory";
+						Update<Category> update = Ebean.createUpdate(Category.class, updStatement);
+						categoryViews.nextCount();
+						update.set("views", categoryViews.get());
+						update.set("idcategory", category.getId());
+						int rows = update.execute();
+						return ok(categorydesc.render("Category Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),category, productList, category.getViews()));
 					}
 				}, ec.current());
 

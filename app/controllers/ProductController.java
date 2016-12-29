@@ -18,6 +18,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import scala.compat.java8.FutureConverters;
 import scala.concurrent.duration.Duration;
+import services.AtomicCounter;
+import services.Counter;
 import views.html.*;
 
 public class ProductController extends Controller{
@@ -27,7 +29,7 @@ public class ProductController extends Controller{
 	@Inject HttpExecutionContext ec;
 
 	@Inject public ProductController(ActorSystem system) {
-		helloActor = system.actorOf(ProductActor.props);
+		this.helloActor = system.actorOf(ProductActor.props);
 	}
 
 	public CompletionStage<Result> getProduct(String idproduct) {
@@ -40,7 +42,6 @@ public class ProductController extends Controller{
 					@Override
 					public Result apply(Object response) {
 						Product product = Product.class.cast(response);
-						//return ok("The name of the product is:"+product.getPrice());
 						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product));
 					}
 				}, ec.current());

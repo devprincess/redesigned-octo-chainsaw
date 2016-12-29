@@ -19,6 +19,16 @@ public class Category extends Model {
 	@Constraints.Required
 	public String name;
 
+	public Integer views;
+
+	public Integer getViews() {
+		return views;
+	}
+
+	public void setViews(Integer views) {
+		this.views = views;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -10,10 +10,10 @@ INSERT INTO paymethod(name)	VALUES ('Mastercard');
 INSERT INTO shippingmethod(name) VALUES ('UPS');
 INSERT INTO shippingmethod(name) VALUES ('Fedex');
 
-INSERT INTO category(name) VALUES   ('Books');
-INSERT INTO category(name) VALUES	('Electronics');
-INSERT INTO category(name) VALUES	('Fashion');
-INSERT INTO category(name) VALUES	('Home');
+INSERT INTO category(name, views) VALUES   ('Books', 0);
+INSERT INTO category(name, views) VALUES	('Electronics', 0);
+INSERT INTO category(name, views) VALUES	('Fashion', 0);
+INSERT INTO category(name, views) VALUES	('Home', 0);
 
 INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Joana Chavez', '3489245521', 'admin', '123456', 'F', '1988-08-10', 1);
 INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Mike Smith', '6786786781', 'test1', '123456', 'F', '1988-06-05', 1);
