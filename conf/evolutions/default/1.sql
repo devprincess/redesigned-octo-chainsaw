@@ -34,6 +34,7 @@ create table product (
   description                   varchar(800),
   price                         double,
   idcategory                    integer,
+  views                         integer,
   constraint pk_product primary key (id)
 );
 

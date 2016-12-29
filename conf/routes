@@ -4,8 +4,6 @@
 
 GET		/							controllers.LoginController.index()
 
-# An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
@@ -17,7 +15,7 @@ GET 	/login						controllers.LoginController.login()
 # Submit the values from the user login
 POST	/login						controllers.LoginController.postLogin()
 
-GET     /profile                    controllers.LoginController.profile()
+GET     /home                    	controllers.LoginController.home()
 
 GET     /logout                     controllers.LoginController.logout()
 

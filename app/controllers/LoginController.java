@@ -39,7 +39,7 @@ public class LoginController extends Controller{
 	public Result login() {
 
 		if (Secured.isLoggedIn(ctx())){
-			return redirect(routes.LoginController.profile());
+			return redirect(routes.LoginController.home());
 		}
 		else{
 			Form<LoginFormData> formData = formFactory.form(LoginFormData.class);
@@ -70,7 +70,7 @@ public class LoginController extends Controller{
 			async.asyncLogOut();
 			session().clear();
 			session("email", loginData.email);
-			return redirect(routes.LoginController.profile());
+			return redirect(routes.LoginController.home());
 		}
 		else{
 			//if this user does not exist, return to the login website
@@ -94,9 +94,9 @@ public class LoginController extends Controller{
 	 * @return The Profile page.
 	 */
 	@Security.Authenticated(Secured.class)
-	public Result profile() {
+	public Result home() {
 		List<Category> categories = Category.find.all();
-		return ok(profile.render("Profile", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), categories));
+		return ok(home.render("Profile", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), categories));
 	}
 
 }

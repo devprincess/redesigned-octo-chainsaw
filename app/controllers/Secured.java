@@ -16,7 +16,10 @@ import play.Environment;
 import play.Logger;
 
 /**
- * Implement authorization for this system.
+ * Secured
+ * -------
+ *
+ * Class that implements the authorization for this system.
  * getUserName() and onUnauthorized override superclass methods to restrict
  * access to the profile() page to logged in users.
  *
@@ -56,18 +59,21 @@ public class Secured extends Security.Authenticator {
 	public static String getUser(Http.Context ctx) {
 
 		String previousTick = ctx.session().get("userTime");
+
+		//For the case of inactivity, log out the user. This parameter (sessionTimeOut) has been set in the application.conf file as 5 minutes.
 		if (previousTick != null && !previousTick.equals("")) {
 			long previousT = Long.valueOf(previousTick);
 			long currentT = new Date().getTime();
 			long timeout = Long.valueOf(configuration.getString("sessionTimeOut")) * 1000 * 60;
 
 			if ((currentT - previousT) > timeout) {
-				// session expired
+				// session expired so clear the cookie
 				ctx.session().clear();
 				return null;
 			}
 		}
 
+		//if there is still activity in the application, then update the user time.
 		String tickString = Long.toString(new Date().getTime());
 		ctx.session().put("userTime", tickString);
 		return ctx.session().get("email");

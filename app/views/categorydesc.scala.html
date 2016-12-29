@@ -9,20 +9,25 @@
 <div class="container">
 @if(isLoggedIn) {     
      <div class="row">
-     	<h3>Category: @categoryInfo.getName()</h3>
-     	<h3>(This category has been seen: @count times)</h3> 
-  		<a href='@routes.LoginController.profile()'>Return to Initial Page</a>
+     	<h3><p class="text-danger">Category: @categoryInfo.getName()</p></h3>
+     	<h3><p>(This category has been seen: @count times)</p></h3>
+     	<br>
+     	<a href='@routes.LoginController.home()' class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to Initial Page</a>
+     	<br>
      </div>
-     
-     <ul>
+     <br>
+
+     <div class="list-group">
+     <h3>
      @for(p <- products) {
-     	<h3><li>@defining(p.getId().toString()) {productId => 
-  		<a href='@routes.ProductController.getProduct(productId)'>@p.getName()}</a></li></h3>
+     	@defining(p.getId().toString()) {productId => 
+  		<a href='@routes.ProductController.getProduct(productId)'class="list-group-item list-group-item-action"> @p.getName()}</a>	
 	 }
-     </ul>
+	 </h3>
+     </div>
 }else{
 	<div class="row">
-		<h3>Session Timed out. <a href="@routes.LoginController.login()">Return to Log in</a></h3>
+		<p>Session Timed out. <a href="@routes.LoginController.login()">Return to Log in</a></p>
 	</div>
    }
 }

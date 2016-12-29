@@ -28,6 +28,9 @@ public class Product extends Model {
 	@Constraints.Required
 	public Integer idcategory;
 
+	@Column(name="views")
+	public Integer views;
+
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +69,14 @@ public class Product extends Model {
 
 	public void setIdcategory(Integer idcategory) {
 		this.idcategory = idcategory;
+	}
+
+	public Integer getViews() {
+		return views;
+	}
+
+	public void setViews(Integer views) {
+		this.views = views;
 	}
 
 	public static Finder<Integer,Product> find = new Finder<>(Product.class);

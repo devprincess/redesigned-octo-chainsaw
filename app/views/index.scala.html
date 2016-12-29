@@ -6,17 +6,25 @@
 <br>
 <br>
 <div class="container">
-@if(isLoggedIn) {
+
      <div class="row">
        <div class="col-sm-10 col-sm-offset-1">
        <h2>Welcome to the CDS Store</h2>
-       <p>The purpose of this project is to show how can we apply the Actor-Message Passing through a system that basically accepts HTTP Requests.</p>
+       <p>The purpose of this project is to show how can we apply the Actor-Message Passing model of Akka through a HTTP request application.
+       	  Play Framework ensures that the backend of the application to handle the requests are done using asynchronous calls using Akka internally and 
+       	  that it also can handle a great amount of calls without blocking using the Actor message passing model. Of course, to ensure that the framework works this way,
+       	  the controllers in this application have been implemented in 2 different ways: In one (LoginController) is the typical use
+       	  of a controller returning a Result (That is the way of how Play resolved the requests). And in another the request has been
+       	  used with CompletionStage (which is actually the way the requests are being handled internally) But it is shown to use the
+       	  Actor -Message passing protocol that Akka uses.
+       	  
+       	  For the database what has been used is the Ebean ORM tool, in which the evolution scripts are being handled inside the conf package of the current project.
+       	  (1.sql: for the creation of the tables schema and 2.sql: for the insertion of the initial values in the database)
+       	  All the configuration for the dependencies has been set using the Maven pom.xml file and the configuration of the application is specified in the application.conf file of the project.
+       	  
+       </p>
        <a href="@routes.LoginController.login()">Log in to start the project</a>
        </div>
-     } else {     
-   	<div class="row">
-		<h3><a href="@routes.LoginController.login()">Session Timed out. Return to Log in</a></h3>
 	</div>
-   }
-}
 </div>
+}
