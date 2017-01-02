@@ -8,7 +8,8 @@ import play.data.format.*;
 import play.data.validation.*;
 
 /**
- *
+ * Entity bean for Category to access to the table category.
+ * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
  * @author joana
  *
  */

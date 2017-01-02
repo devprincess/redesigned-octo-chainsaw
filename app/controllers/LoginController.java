@@ -36,9 +36,8 @@ import views.formdata.*;
  */
 public class LoginController extends Controller{
 
-	//@Inject AsyncController async;
 	@Inject FormFactory formFactory;
-	AtomicInteger usersCounter;
+	private final AtomicInteger usersCounter;
 
 	@Inject
 	public LoginController(FormFactory formFactory, AtomicInteger usersCounter){

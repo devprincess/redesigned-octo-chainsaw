@@ -5,27 +5,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.avaje.ebean.Model;
 import com.avaje.ebean.Model.Finder;
 
 import play.data.validation.Constraints;
 
 /**
- * Entity bean for Stock to access to the table stock.
+ * Entity bean for ShoppingCartItem to access to the table shoppingcartitem.
  * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
  * @author joana
  *
  */
 @Entity
-@Table( name= "stock")
-public class Stock extends Model {
+@Table( name= "shoppingcartitem")
+public class ShoppingCartItem {
 
 	@Id
 	@Constraints.Max(10)
 	private Integer id;
 
 	@Column(name="idproduct")
-	@Constraints.Required
+	@Constraints.Max(10)
 	private Integer idproduct;
 
 	@Column(name="quantity")
@@ -55,6 +54,6 @@ public class Stock extends Model {
 		this.quantity = quantity;
 	}
 
-	public static Finder<Integer,Stock> find = new Finder<Integer,Stock>(Stock.class);
+	public static Finder<Integer,ShoppingCartItem> find = new Finder<>(ShoppingCartItem.class);
 
 }

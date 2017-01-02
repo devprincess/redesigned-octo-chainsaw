@@ -43,11 +43,11 @@ import scala.compat.java8.FutureConverters;
  */
 public class CategoryController extends Controller{
 
-	final ActorRef categoryActor;
+	private final ActorRef categoryActor;
 
 	@Inject HttpExecutionContext ec;
 
-	AtomicInteger categoryViews;
+	private final AtomicInteger categoryViews;
 
 	/**
 	 * Constructor:

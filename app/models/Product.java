@@ -7,6 +7,12 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+/**
+ * Entity bean for Product to access to the table product.
+ * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
+ * @author joana
+ *
+ */
 @Entity
 @Table( name= "product")
 public class Product extends Model {

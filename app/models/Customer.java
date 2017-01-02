@@ -7,6 +7,12 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+/**
+ * Entity bean for Customer to access to the table customer.
+ * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
+ * @author joana
+ *
+ */
 @Entity
 @Table( name= "customer")
 public class Customer extends Model {
@@ -38,6 +44,9 @@ public class Customer extends Model {
 	@Column(name="birthdate")
 	@Formats.DateTime(pattern="yyyy/MM/dd")
 	private Date birthdate = new Date();
+
+	@Column(name="address")
+	private String address;
 
 	@Constraints.Required
 	private Integer idpaymethod;
@@ -105,6 +114,16 @@ public class Customer extends Model {
 	public void setIdpaymethod(Integer idpaymethod) {
 		this.idpaymethod = idpaymethod;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
 
 	public static Finder<Integer,Customer> find = new Finder<Integer,Customer>(Customer.class);
 

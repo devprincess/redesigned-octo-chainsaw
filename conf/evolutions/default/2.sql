@@ -15,10 +15,10 @@ INSERT INTO category(name, views) VALUES	('Electronics', 0);
 INSERT INTO category(name, views) VALUES	('Fashion', 0);
 INSERT INTO category(name, views) VALUES	('Home', 0);
 
-INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Joana Chavez', '3489245521', 'admin', '123456', 'F', '1988-08-10', 1);
-INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Mike Smith', '6786786781', 'test1', '123456', 'F', '1988-06-05', 1);
-INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Jennifer Brown', '5589245521', 'test2', '123456', 'F', '1988-04-23', 1);
-INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod) VALUES ('Justin Pohlmann', '7789255521', 'test3', '123456', 'F', '1988-01-30', 1);
+INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Joana Chavez', '3489245521', 'admin', '123456', 'F', '1988-08-10', 1, '');
+INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Mike Smith', '6786786781', 'test1', '123456', 'F', '1988-06-05', 1,'');
+INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Jennifer Brown', '5589245521', 'test2', '123456', 'F', '1988-04-23', 1,'');
+INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Justin Pohlmann', '7789255521', 'test3', '123456', 'F', '1988-01-30', 1,'');
 
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Harry Potter: Harry Potter and the Sorcerers Stone', 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harrys eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 23.00, 1, 0);
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Harry Potter: Harry Potter and the Cursed Child','Based on an original new story by J.K. Rowling, John Tiffany and Jack Thorne, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play will receive its world premiere in Londons West End on 30th July 2016.', 30.00, 1, 0);

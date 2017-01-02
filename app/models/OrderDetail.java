@@ -11,21 +11,25 @@ import com.avaje.ebean.Model.Finder;
 import play.data.validation.Constraints;
 
 /**
- * Entity bean for Stock to access to the table stock.
+ * Entity bean for OrderDetail to access to the table o_orderdetail.
  * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
  * @author joana
  *
  */
 @Entity
-@Table( name= "stock")
-public class Stock extends Model {
+@Table( name= "o_orderdetail")
+public class OrderDetail extends Model{
 
 	@Id
 	@Constraints.Max(10)
 	private Integer id;
 
+	@Column(name="idorder")
+	@Constraints.Max(10)
+	private Integer idorder;
+
 	@Column(name="idproduct")
-	@Constraints.Required
+	@Constraints.Max(10)
 	private Integer idproduct;
 
 	@Column(name="quantity")
@@ -37,6 +41,14 @@ public class Stock extends Model {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getIdorder() {
+		return idorder;
+	}
+
+	public void setIdorder(Integer idorder) {
+		this.idorder = idorder;
 	}
 
 	public Integer getIdproduct() {
@@ -55,6 +67,6 @@ public class Stock extends Model {
 		this.quantity = quantity;
 	}
 
-	public static Finder<Integer,Stock> find = new Finder<Integer,Stock>(Stock.class);
+	public static Finder<Integer,OrderDetail> find = new Finder<>(OrderDetail.class);
 
 }

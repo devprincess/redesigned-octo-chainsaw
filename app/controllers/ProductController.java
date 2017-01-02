@@ -52,12 +52,12 @@ import views.html.*;
 
 public class ProductController extends Controller{
 
-	final ActorRef productActor;
+	private final ActorRef productActor;
 
 	@Inject HttpExecutionContext ec;
 
 	//Atomic counter to handle the number of views per each product.
-	AtomicInteger productViews;
+	private final AtomicInteger productViews;
 
 	/**
 	 * Constructor:

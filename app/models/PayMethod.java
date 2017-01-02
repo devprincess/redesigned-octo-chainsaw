@@ -8,6 +8,12 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+/**
+ * Entity bean for Paymethod to access to the table paymethod.
+ * This class generates the DDL statements for running the evolutions for Ebean ORM. (See conf/evolutions/1.sql)
+ * @author joana
+ *
+ */
 @Entity
 @Table( name= "paymethod")
 public class PayMethod extends Model {
