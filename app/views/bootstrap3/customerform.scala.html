@@ -1,0 +1,53 @@
+@*************************
+ Simple Login template.
+ 
+ Takes a reverse route, the email field, and the password field from a form. 
+ If form validation fails, then the fields will have Twitter Bootstrap error highlighting.
+ Clients should set the "error" key in flash scope to provide feedback on errors. 
+**************************@
+
+
+@(reverseRoute: play.api.mvc.Call, nameField: Field, mobileField: Field, emailField: Field, passwordField:Field, genderField: Field, birthdateField:Field, addressField:Field)
+
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Update your profile</h3>
+      </div>
+      <div class="panel-body">
+        @helper.form(reverseRoute, 'role -> "form") {
+          <fieldset>
+          	<div class="form-group @if(nameField.hasErrors) {has-error}" >
+              <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Name" type="text">
+            </div>
+            <div class="form-group @if(mobileField.hasErrors) {has-error}" >
+              <input id="@mobileField.id" name="@mobileField.name" value="@mobileField.value.getOrElse("")" class="form-control" placeholder="Mobile" type="text">
+            </div>
+            <div class="form-group @if(emailField.hasErrors) {has-error}" >
+              <input id="@emailField.id" name="@emailField.name" value="@emailField.value.getOrElse("")" class="form-control" placeholder="E-mail" type="text">
+            </div>
+            <div class="form-group @if(passwordField.hasErrors) {has-error}" >
+              <input id="@passwordField.id" name="@passwordField.name" value="@passwordField.value.getOrElse("")" class="form-control" placeholder="Password" type="password">
+            </div>
+            <div class="form-group @if(genderField.hasErrors) {has-error}" >
+              <input id="@genderField.id" name="@genderField.name" value="@genderField.value.getOrElse("")" class="form-control" placeholder="Gender" type="text">
+            </div>
+            <div class="form-group @if(birthdateField.hasErrors) {has-error}" >
+              <input id="@birthdateField.id" name="@birthdateField.name" value="@birthdateField.value.getOrElse("")" class="form-control" placeholder="Birthdate" type="text">
+            </div>
+            <div class="form-group @if(addressField.hasErrors) {has-error}" >
+              <input id="@addressField.id" name="@addressField.name" value="@addressField.value.getOrElse("")" class="form-control" placeholder="Address" type="text">
+            </div>
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Update your profile">
+          </fieldset>
+        }
+         @if(flash.containsKey("error")) {
+           <div id="error-message" class="text-danger">
+             @flash.get("error")
+           </div>
+         }
+      </div>
+    </div>
+  </div>
+</div>

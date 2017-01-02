@@ -25,3 +25,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET		/product/:idproduct			controllers.ProductController.getProduct(idproduct)
 
 GET		/category/:idcategory		controllers.CategoryController.getProductsByCategory(idcategory)
+
+GET 	/profile					controllers.CustomerController.profile()
+
+PUT		/profile					controllers.CustomerController.updateInfo()

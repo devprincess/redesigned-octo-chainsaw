@@ -111,13 +111,13 @@ public class LoginController extends Controller{
 	}
 
 	/**
-	 * Provides the Profile page (only to authenticated users).
-	 * @return The Profile page.
+	 * Provides the Home page to the category list of products (only to authenticated users).
+	 * @return The category home page.
 	 */
 	@Security.Authenticated(Secured.class)
 	public Result home() {
 		List<Category> categories = Category.find.all();
-		return ok(home.render("Profile", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), categories, usersCounter.get()));
+		return ok(home.render("Home", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), categories, usersCounter.get()));
 	}
 
 }
