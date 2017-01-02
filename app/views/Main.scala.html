@@ -40,7 +40,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           @if(isLoggedIn) {
-            <li><p class="navbar-text">@userInfo.email</p></li>
+            <li><p class="navbar-text">@userInfo.getEmail()</p></li>
+            <li><a href="#">My shopping cart</a></li>
             <li><a href="@routes.LoginController.logout()">Logout</a></li>
           } else {
             <li><a href="@routes.LoginController.login()">Login</a></li>

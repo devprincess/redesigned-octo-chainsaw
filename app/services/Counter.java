@@ -9,8 +9,5 @@ package services;
  * {@link AtomicCounter} implementation.
  */
 public interface Counter {
-
-	public int get();
-	public void set(int newValue);
-	public int nextCount();
+    int nextCount();
 }

@@ -7,19 +7,24 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+/**
+ *
+ * @author joana
+ *
+ */
 @Entity
 @Table( name= "category")
 public class Category extends Model {
 
 	@Id
 	@Constraints.Max(10)
-	public Integer id;
+	private Integer id;
 
 	@Column(name="name")
 	@Constraints.Required
-	public String name;
+	private String name;
 
-	public Integer views;
+	private Integer views;
 
 	public Integer getViews() {
 		return views;

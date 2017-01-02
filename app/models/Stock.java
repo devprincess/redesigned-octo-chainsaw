@@ -16,14 +16,14 @@ public class Stock extends Model {
 
 	@Id
 	@Constraints.Max(10)
-	public Integer id;
+	private Integer id;
 
 	@Column(name="idproduct")
 	@Constraints.Required
-	public Integer idproduct;
+	private Integer idproduct;
 
 	@Column(name="quantity")
-	public Integer quantity;
+	private Integer quantity;
 
 	public Integer getId() {
 		return id;

@@ -13,34 +13,34 @@ public class Customer extends Model {
 
 	@Id
 	@Constraints.Max(10)
-	public Integer id;
+	private Integer id;
 
 	@Column(name="name")
 	@Constraints.Required
-	public String name;
+	private String name;
 
 	@Column(name="mobile")
 	@Constraints.MaxLength(10)
-	public String mobile;
+	private String mobile;
 
 	@Column(name="email")
 	@Constraints.Email
-	public String email;
+	private String email;
 
 	@Column(name="pwd")
 	@Constraints.Required
-	public String pwd;
+	private String pwd;
 
 	@Column(name="gender")
 	@Constraints.MaxLength(1)
-	public String gender;
+	private String gender;
 
 	@Column(name="birthdate")
 	@Formats.DateTime(pattern="yyyy/MM/dd")
-	public Date birthdate = new Date();
+	private Date birthdate = new Date();
 
 	@Constraints.Required
-	public Integer idpaymethod;
+	private Integer idpaymethod;
 
 	public Integer getId() {
 		return id;

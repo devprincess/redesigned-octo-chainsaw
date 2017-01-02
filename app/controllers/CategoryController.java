@@ -4,6 +4,7 @@ import static akka.pattern.Patterns.ask;
 
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 import javax.inject.Inject;
@@ -22,7 +23,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
-import services.AtomicCounter;
 
 
 /**
@@ -30,23 +30,24 @@ import services.AtomicCounter;
  * -------------------
  *
  * This class is the controller for the categories of the products.
- * The class shows the example of using the return of Completion<Result> in the getProductsByCategory method
+ * The class shows the example of using the return of CompletionStage<Result> in the getProductsByCategory method
  * and that is how internally calls are handled in Play Framework.
- * The usual and common way would be returning a Result (Like in the LoginController) but here it is using the Actor and
- * Message passing protocol in a way to show how it is handled.
+ * The usual and common way would be returning a Result (Like in the LoginController class controllers/LoginController.java)
  *
  * The message passing in this case is ensured using the categoryActor reference which calls
- *  a CategoryActor type and at the moment of receiving it ensures that the actor is of this type.
+ * a CategoryActor type and at the moment of receiving it ensures that the actor is of this type.
+ * (See the classes related to actor message passing into app/actors/CategoryActor.java and app/actors/CategoryActorProtocol.java
+ *
+ * @author joana
+ *
  */
-
 public class CategoryController extends Controller{
 
 	final ActorRef categoryActor;
 
-	// HttpExecutionContext: Needed to handle asynchronous calls in the method getProductsByCategory
 	@Inject HttpExecutionContext ec;
 
-	@Inject AtomicCounter categoryViews;
+	AtomicInteger categoryViews;
 
 	/**
 	 * Constructor:
@@ -62,7 +63,8 @@ public class CategoryController extends Controller{
 	 * @param system
 	 * @param categoryViews
 	 */
-	@Inject public CategoryController(ActorSystem system, AtomicCounter categoryViews) {
+	@Inject
+	public CategoryController(ActorSystem system, AtomicInteger categoryViews) {
 		this.categoryActor = system.actorOf(CategoryActor.props);
 		this.categoryViews= categoryViews;
 
@@ -98,13 +100,14 @@ public class CategoryController extends Controller{
 						Category category = Category.class.cast(response);
 
 						//Use of Ebean ORM to find all the products related to this category.
-						List<Product> productList = Product.find.where().eq("idcategory", category.id).findList();
+						//Also notice the use of the Java Framework Collection for List.
+						List<Product> productList = Product.find.where().eq("idcategory", category.getId()).findList();
 
 						//I get the views that this category has from the database, and set it to the atomic integer value of categoryViews
 						categoryViews.set(category.getViews());
 
 						//after setting the initial value of the views for this category, and as this controller is being accessed, I increase the count
-						categoryViews.nextCount();
+						categoryViews.incrementAndGet();
 
 						//Then I update the value of this new counter for the category to the database using the Ebean ORM functions
 						String updStatement = "update category set views = :views where id=:idcategory";

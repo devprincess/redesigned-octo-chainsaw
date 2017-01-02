@@ -4,6 +4,7 @@ import static akka.pattern.Patterns.ask;
 
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 import javax.inject.Inject;
@@ -24,8 +25,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import scala.compat.java8.FutureConverters;
 import scala.concurrent.duration.Duration;
-import services.AtomicCounter;
-import services.Counter;
 import views.html.*;
 
 
@@ -33,25 +32,32 @@ import views.html.*;
  * Product Controller:
  * -------------------
  *
- * This class is the controller for the products.
- * The class is using the call of Completion<Result> and that is how internally calls are
- * ensured to be asynchronous called in Play Framework. The usual and common way would be
- * returning a Result (Like in the LoginController) but here it is using the Actor and
- * Message passing protocol in a way to show how it is handled.
+ * This class is used as the controller for the product items.
  *
- * The message passing in this case is ensured using the productActor reference which calls
- *  a productActor type and at the moment of receiving it ensures that the actor is of this type.
+ * Play framework manages all the asynchronous calling internally using the return of a "Result" object everytime
+ * it receives a request. In addition, the framework also allows the use of asynchronous computations using
+ * the CompletionStage interface from the concurrent libraries of Java 8
+ * (https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
+ *
+ * This class has been implemented using the second method to show the use of asynchronous calls using
+ * CompletionStage from the concurrent api libraries of Java 8.
+ *
+ * The communication between this controller and the correspondent model (app/models/Product.java)
+ * if being handled with the Actor/ActorProtocol message passing from Akka.
+ *
+ * The models are being handled using Evolutions and Ebean ORM to enable the distribution of the database.
+ *
+ * All dependencies have been handled using the Maven pom.xml
  */
 
 public class ProductController extends Controller{
 
 	final ActorRef productActor;
 
-	//HttpExecutionContext: Context needed to be sent in the CompletionStage<Result> call.
 	@Inject HttpExecutionContext ec;
 
 	//Atomic counter to handle the number of views per each product.
-	@Inject AtomicCounter productViews;
+	AtomicInteger productViews;
 
 	/**
 	 * Constructor:
@@ -67,7 +73,8 @@ public class ProductController extends Controller{
 	 * @param system
 	 * @param atomicCounter
 	 */
-	@Inject public ProductController(ActorSystem system, AtomicCounter productViews) {
+	@Inject
+	public ProductController(ActorSystem system, AtomicInteger productViews) {
 		this.productActor = system.actorOf(ProductActor.props);
 		this.productViews = productViews;
 	}
@@ -99,11 +106,11 @@ public class ProductController extends Controller{
 					public Result apply(Object response) {
 						Product product = Product.class.cast(response);
 
-						//Set the value to the atomic integer first
+						//Set the value to the atomic value first
 						productViews.set(product.getViews());
 
 						//Increment this value since it is a new visit
-						productViews.nextCount();
+						productViews.incrementAndGet();
 
 						//update this value in the database for the next try (Use of Ebean ORM Method to update)
 						String updStatement = "update product set views = :views where id=:idproduct";

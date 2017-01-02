@@ -13,11 +13,11 @@ public class ShippingMethod extends Model {
 
 	@Id
 	@Constraints.Max(10)
-	public Integer id;
+	private Integer id;
 
 	@Column(name="name")
 	@Constraints.Required
-	public String name;
+	private String name;
 
 	public Integer getId() {
 		return id;

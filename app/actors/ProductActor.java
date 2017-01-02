@@ -16,7 +16,7 @@ public class ProductActor extends UntypedActor {
 	public void onReceive(Object msg) throws Exception {
 		if (msg instanceof SayProduct) {
 			ProductActorProtocol.SayProduct p = (SayProduct) msg;
-			Product prod = Product.find.byId(p.product.id);
+			Product prod = Product.find.byId(p.product.getId());
 			sender().tell(prod, self());
 		}
 	}

@@ -13,23 +13,23 @@ public class Product extends Model {
 
 	@Id
 	@Constraints.Max(10)
-	public Integer id;
+	private Integer id;
 
 	@Column(name="name")
-	public String name;
+	private String name;
 
 	@Column(name="description", length=800)
-	public String description;
+	private String description;
 
 	@Column(name="price")
-	public Double price;
+	private Double price;
 
 	@Column(name="idcategory")
 	@Constraints.Required
-	public Integer idcategory;
+	private Integer idcategory;
 
 	@Column(name="views")
-	public Integer views;
+	private Integer views;
 
 	public Integer getId() {
 		return id;
