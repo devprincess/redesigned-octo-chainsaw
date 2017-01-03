@@ -28,4 +28,4 @@ GET		/category/:idcategory		controllers.CategoryController.getProductsByCategory
 
 GET 	/profile					controllers.CustomerController.profile()
 
-PUT		/profile					controllers.CustomerController.updateInfo()
+POST 	/profile					controllers.CustomerController.updateInfo()

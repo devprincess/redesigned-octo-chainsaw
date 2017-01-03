@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import models.Customer;
+
 /**
  * Backing class for updating the profile of a customer.
  **/
@@ -26,6 +28,16 @@ public class CustomerFormData {
 
 	public CustomerFormData(){
 
+	}
+
+	public CustomerFormData(Customer c){
+		this.name= c.getName();
+		this.mobile=c.getMobile();
+		this.email=c.getEmail();
+		this.pwd=c.getPwd();
+		this.gender=c.getGender();
+		this.birthdate=c.getBirthdate();
+		this.address=c.getAddress();
 	}
 
 	public String getName() {
