@@ -1,0 +1,32 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, products: List[Product])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	@if(isLoggedIn) {
+	  
+     These are your products in your Shopping cart:
+     <div class="list-group">
+     @if(products.isEmpty) {
+     		There are no products in your shopping cart yet.
+     } else{
+     	<h3><ul>
+     		@for(p <- products) {
+     			<li class="list-group-item list-group-item-action">@p.getName()</li>}
+     		</ul>
+     	</h3>
+     	}
+     </div>
+   } else {
+   	<div class="row">
+   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+	</div>
+   }
+}
+</div>

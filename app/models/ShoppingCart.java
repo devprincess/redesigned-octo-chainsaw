@@ -42,6 +42,14 @@ public class ShoppingCart extends Model{
 		this.id = id;
 	}
 
+	public Integer getIdcustomer() {
+		return idcustomer;
+	}
+
+	public void setIdcustomer(Integer idcustomer) {
+		this.idcustomer = idcustomer;
+	}
+
 	public List<ShoppingCartItem> getItems() {
 		return items;
 	}

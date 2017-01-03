@@ -29,3 +29,8 @@ GET		/category/:idcategory		controllers.CategoryController.getProductsByCategory
 GET 	/profile					controllers.CustomerController.profile()
 
 POST 	/profile					controllers.CustomerController.updateInfo()
+
+GET 	/cart						controllers.ShoppingCartController.getProducts()
+
+GET		/cart/:idproduct			controllers.ShoppingCartController.addProduct(idproduct)
+
