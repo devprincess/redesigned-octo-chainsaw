@@ -19,7 +19,7 @@
      	<p class="text-success">@productInfo.getName()</p>
      	<p class="text-warning">Price (Euro):  @productInfo.getPrice()</p>
      	@if(stock>0){
-     	
+     	<p class="text-danger">There are @stock items available<p>
      	@defining(productInfo.getId().toString()) {productId => 
      	<a href='@routes.ShoppingCartController.addProduct(productId)' type="button" class="btn btn-danger">Add to shopping cart}</a>
      	

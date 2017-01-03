@@ -16,15 +16,24 @@
      @if(shopItems.isEmpty) {
      		There are no products in your shopping cart yet.
      } else{
-     	<h3><ul>
+     	<h3>
+     	<form>
+     	<ul>
      		@for((item, index) <- shopItems.zipWithIndex){
      		@defining(item.getIdproduct()) {idproduct =>
-     			<li class="list-group-item list-group-item-action">@item.getProductName(idproduct).toString()}	
-     			Quantity: @item.getQuantity.toString()
+     			
+              	<div class="form-group">
+              	<li class="list-group-item list-group-item-action">@item.getProductName(idproduct).toString()}
+              		<div class="col-xs-12">
+              			Quantity:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
+            		</div>
+            	</div>
      			}
      			</li>
      		</ul>
+     		
      	</h3>
+     	</form>
      	}
      </div>
    } else {

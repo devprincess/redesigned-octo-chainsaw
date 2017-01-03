@@ -13,7 +13,7 @@ public class CategoryActor extends UntypedActor {
 	public void onReceive(Object msg) throws Exception {
 		if (msg instanceof SayCategory) {
 			CategoryActorProtocol.SayCategory c = (SayCategory) msg;
-			Category category = Category.find.byId(c.category.getId());
+			Category category = Category.find.byId(c.getCategory().getId());
 			sender().tell(category, self());
 		}
 	}
