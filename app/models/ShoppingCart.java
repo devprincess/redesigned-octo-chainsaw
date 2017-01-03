@@ -58,5 +58,21 @@ public class ShoppingCart extends Model{
 		this.items = items;
 	}
 
+
+	public boolean containsSpecificProduct(Integer idproduct){
+
+		boolean b = false;
+
+		for (int i=0; i<this.getItems().size(); i++){
+			if (this.getItems().get(i).getIdproduct() == idproduct){
+				b= true;
+				break;
+			} else {
+				b=false;
+			}
+		}
+		return b;
+	}
+
 	public static Finder<Integer,ShoppingCart> find = new Finder<>(ShoppingCart.class);
 }

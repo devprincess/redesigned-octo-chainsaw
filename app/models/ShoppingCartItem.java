@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -52,6 +54,11 @@ public class ShoppingCartItem {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getProductName(Integer idproduct){
+		Product p = Product.find.byId(idproduct);
+		return p.getName();
 	}
 
 	public static Finder<Integer,ShoppingCartItem> find = new Finder<>(ShoppingCartItem.class);

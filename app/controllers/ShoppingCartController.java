@@ -62,8 +62,27 @@ public class ShoppingCartController extends Controller{
 		}
 		else{
 			sp = lsp.get(0);
-			List<ShoppingCartItem> newListItems = Stream.concat(sp.getItems().stream(), items.stream()).collect(Collectors.toList());
-			sp.setItems(newListItems);
+
+			List<ShoppingCartItem> existingItems = sp.getItems();
+
+			if(sp.containsSpecificProduct(Integer.parseInt(idproduct))){
+
+				for (int i=0; i<existingItems.size(); i++){
+					ShoppingCartItem s = ShoppingCartItem.find.byId(existingItems.get(i).getId());
+					String updStatement = "update shoppingcartitem set quantity = :quantity where shopping_cart_id=:shopping_cart_id and idproduct=:idproduct";
+					Update<ShoppingCartItem> update = Ebean.createUpdate(ShoppingCartItem.class, updStatement);
+					update.set("shopping_cart_id", s.getId());
+					update.set("idproduct", Integer.parseInt(idproduct));
+					update.set("quantity", s.getQuantity()+1);
+					int rows = update.execute();
+
+				}
+			}
+			else{
+				List<ShoppingCartItem> newListItems = Stream.concat(sp.getItems().stream(), items.stream()).collect(Collectors.toList());
+				sp.setItems(newListItems);
+			}
+
 		}
 
 		Ebean.save(sp);
@@ -94,7 +113,7 @@ public class ShoppingCartController extends Controller{
 			products.add(p);
 		}
 
-		return ok(shoppingcart.render("ShoppingCart", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), products));
+		return ok(shoppingcart.render("ShoppingCart", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), lp));
 	}
 
 }

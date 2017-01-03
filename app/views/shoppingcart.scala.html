@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, products: List[Product])
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, shopItems: List[ShoppingCartItem]))
 
 @import bootstrap3._
 
@@ -13,12 +13,16 @@
 	  
      These are your products in your Shopping cart:
      <div class="list-group">
-     @if(products.isEmpty) {
+     @if(shopItems.isEmpty) {
      		There are no products in your shopping cart yet.
      } else{
      	<h3><ul>
-     		@for(p <- products) {
-     			<li class="list-group-item list-group-item-action">@p.getName()</li>}
+     		@for((item, index) <- shopItems.zipWithIndex){
+     		@defining(item.getIdproduct()) {idproduct =>
+     			<li class="list-group-item list-group-item-action">@item.getProductName(idproduct).toString()}	
+     			Quantity: @item.getQuantity.toString()
+     			}
+     			</li>
      		</ul>
      	</h3>
      	}
