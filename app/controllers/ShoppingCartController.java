@@ -32,6 +32,13 @@ import views.html.*;
  */
 public class ShoppingCartController extends Controller{
 
+
+	@Security.Authenticated(Secured.class)
+	public Result deleteProduct(String idproduct) {
+		return ok("delete product");
+	}
+
+
 	@Security.Authenticated(Secured.class)
 	public Result addProduct(String idproduct) {
 

@@ -9,13 +9,13 @@
 <div class="container">
 @if(isLoggedIn) {   
      <div class="row">
-     	<h3><p class="text-danger">Information about the product</h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
-  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to the category}</a>
+     	<h5><p class="text-danger">Information about the product</h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Return to the category}</a>
      </div>
     
-    <h3>(This product has been seen: @count times)</h3>
+    <h5>(This product has been seen: @count times)</h5>
      <div>
-     <h3>
+     <h5>
      	<p class="text-success">@productInfo.getName()</p>
      	<p class="text-warning">Price (Euro):  @productInfo.getPrice()</p>
      	@if(stock>0){
@@ -26,8 +26,8 @@
      	} else{
      	<p class="text-danger">There are no items available in stock.<p>
      	}	
-     	<p class="bg-info"> @productInfo.getDescription()</p>
-     </h3>
+     	<p class="bg-info" align="justify"> @productInfo.getDescription()</p>
+     </h5>
      </div>
      } else {
    	<div class="row">
