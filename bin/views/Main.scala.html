@@ -43,6 +43,7 @@
             <li><a href="@routes.CustomerController.profile()">@userInfo.getEmail()</a></li>
             <li><a href="@routes.ShoppingCartController.getProducts()">My shopping cart</a></li>
             <li><a href="@routes.LoginController.logout()">Logout</a></li>
+            <li><a href="@routes.AsyncController.asyncLogOut()">Async Logout</a></li>
           } else {
             <li><a href="@routes.LoginController.login()">Login</a></li>
           }

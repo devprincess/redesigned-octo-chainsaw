@@ -37,11 +37,18 @@ import views.formdata.*;
 public class LoginController extends Controller{
 
 	@Inject FormFactory formFactory;
-	private final AtomicInteger usersCounter;
+	private AtomicInteger usersCounter;
 
 	@Inject
 	public LoginController(FormFactory formFactory, AtomicInteger usersCounter){
 		this.formFactory = formFactory;
+		this.usersCounter = usersCounter;
+	}
+	public AtomicInteger getUsersCounter() {
+		return usersCounter;
+	}
+
+	public void setUsersCounter(AtomicInteger usersCounter) {
 		this.usersCounter = usersCounter;
 	}
 	/**
