@@ -7,6 +7,7 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.SqlUpdate;
 import com.avaje.ebean.Update;
 import models.Customer;
 import models.Product;
@@ -35,7 +36,35 @@ public class ShoppingCartController extends Controller{
 
 	@Security.Authenticated(Secured.class)
 	public Result deleteProduct(String idproduct) {
-		return ok("delete product");
+
+		Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
+		List<ShoppingCart> lsp= ShoppingCart.find.where().eq("idcustomer", c.getId()).findList();
+		ShoppingCart sp = new ShoppingCart();
+		sp = lsp.get(0);
+
+		List<ShoppingCartItem> moreThanOneItem = ShoppingCartItem.find.where().eq("shopping_cart_id", sp.getId()).eq("idproduct", idproduct).gt("quantity", 1).findList();
+
+		String statement = "DELETE from shoppingcartitem WHERE shopping_cart_id =:shopping_cart_id and idproduct =:idproduct";
+		if (moreThanOneItem.isEmpty()){
+			SqlUpdate deleteProductUpd = Ebean.createSqlUpdate(statement);
+			deleteProductUpd.setParameter("shopping_cart_id", sp.getId());
+			deleteProductUpd.setParameter("idproduct", Integer.parseInt(idproduct));
+			int row1 = deleteProductUpd.execute();
+		}
+		else{
+			statement = "update shoppingcartitem set quantity = quantity - 1 where shopping_cart_id =:shopping_cart_id and idproduct=:idproduct";
+			Update<ShoppingCartItem> updateProductUpd = Ebean.createUpdate(ShoppingCartItem.class, statement);
+			updateProductUpd.set("shopping_cart_id", sp.getId());
+			updateProductUpd.set("idproduct", Integer.parseInt(idproduct));
+			int rows = updateProductUpd.execute();
+		}
+
+		String stockStatement = "update stock set quantity = quantity + 1 where idproduct=:idproduct";
+		Update<Stock> updateStockUpd = Ebean.createUpdate(Stock.class, stockStatement);
+		updateStockUpd.set("idproduct", Integer.parseInt(idproduct));
+		int rows = updateStockUpd.execute();
+
+		return redirect(routes.ShoppingCartController.getProducts());
 	}
 
 

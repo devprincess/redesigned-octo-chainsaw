@@ -23,7 +23,9 @@
      		@defining(item.getIdproduct()) {idproduct =>
      			
               	<div class="form-group">
-              	<li class="list-group-item list-group-item-action">@item.getProductName(idproduct).toString()
+              	<li class="list-group-item list-group-item-action">
+              	<a href='@routes.ProductController.getProduct(idproduct.toString())'>
+              	@item.getProductName(idproduct).toString()</a>
               	
               		<div class="col-xs-12">
               		<br>
@@ -32,8 +34,7 @@
             		<br>
             		&nbsp;&nbsp;&nbsp;<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'> Delete item</a>	
             		}
-            		
-  					            		
+            		            		
             	</div>
      			}
      			</li>
