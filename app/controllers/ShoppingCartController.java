@@ -18,6 +18,18 @@ import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
 
+
+/**
+ * ShoppingCart Controller:
+ * -------------------
+ *
+ * This class manages the page for accessing the shoppingcart (addition of new products, stock updates)
+ * It also includes the ability of deleting an specific item from the shopping cart and
+ * it lists the products available in the shopping cart.
+ *
+ * @author joana
+ *
+ */
 public class ShoppingCartController extends Controller{
 
 	@Security.Authenticated(Secured.class)
