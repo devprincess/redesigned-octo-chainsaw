@@ -1,0 +1,34 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, categoryInfo: Category, products: List[Product], count: Integer)
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+@if(isLoggedIn) {     
+     <div class="row">
+     	<h3><p class="text-danger">Category: @categoryInfo.getName()</p></h3>
+     	<h3><p>(This category has been seen: @count times)</p></h3>
+     	<br>
+     	<a href='@routes.LoginController.home()' class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to Initial Page</a>
+     	<br>
+     </div>
+     <br>
+
+     <div class="list-group">
+     <h3>
+     @for(p <- products) {
+     	@defining(p.getId().toString()) {productId => 
+  		<a href='@routes.ProductController.getProduct(productId)'class="list-group-item list-group-item-action"> @p.getName()}</a>	
+	 }
+	 </h3>
+     </div>
+}else{
+	<div class="row">
+		<p>Session Timed out. <a href="@routes.LoginController.login()">Return to Log in</a></p>
+	</div>
+   }
+}
+</div>

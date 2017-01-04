@@ -1,0 +1,38 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, productInfo: Product, count: Integer, stock: Integer)
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+@if(isLoggedIn) {   
+     <div class="row">
+     	<h3><p class="text-danger">Information about the product</h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to the category}</a>
+     </div>
+    
+    <h3>(This product has been seen: @count times)</h3>
+     <div>
+     <h3>
+     	<p class="text-success">@productInfo.getName()</p>
+     	<p class="text-warning">Price (Euro):  @productInfo.getPrice()</p>
+     	@if(stock>0){
+     	<p class="text-danger">There are @stock items available<p>
+     	@defining(productInfo.getId().toString()) {productId => 
+     	<a href='@routes.ShoppingCartController.addProduct(productId)' type="button" class="btn btn-danger">Add to shopping cart}</a>
+     	
+     	} else{
+     	<p class="text-danger">There are no items available in stock.<p>
+     	}	
+     	<p class="bg-info"> @productInfo.getDescription()</p>
+     </h3>
+     </div>
+     } else {
+   	<div class="row">
+		<a href="@routes.LoginController.login()">Session Timed out. Return to Log in</a>
+	</div>
+   }
+}
+</div>

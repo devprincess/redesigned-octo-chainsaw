@@ -1,0 +1,29 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, customerForm: Form[views.formdata.CustomerFormData])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	@if(isLoggedIn) {
+	  
+     	@customerform(routes.CustomerController.updateInfo(), 
+     					customerForm("name"),
+     					customerForm("mobile"), 
+     					customerForm("email"), 
+     					customerForm("pwd"), 
+     					customerForm("gender"), 
+     					customerForm("birthdate"), 
+     					customerForm("address") )
+      
+   } else {
+   	<div class="row">
+   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+	</div>
+   }
+}
+</div>

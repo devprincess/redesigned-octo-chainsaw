@@ -1,0 +1,29 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, categories: List[Category], countUsers: Integer)
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	@if(isLoggedIn) {
+	 <h3>Users logged in the system: @countUsers</h3>
+     <h3><p>Welcome to the CDS Store, here you can find all the products that we offer listed by categories. </p>
+     <p>Select a category to get started.</p></h3>
+     
+     <div class="list-group">
+     <h3>
+     @for(c <- categories) {
+     	@defining(c.getId().toString()) {categoryId => 
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="list-group-item list-group-item-action">@c.getName()}</a>
+	 }
+	 </h3>
+	 </div>
+   } else {
+   	<div class="row">
+   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+	</div>
+   }
+}
+</div>

@@ -67,16 +67,11 @@ public class ShoppingCartController extends Controller{
 
 			if(sp.containsSpecificProduct(Integer.parseInt(idproduct))){
 
-				for (int i=0; i<existingItems.size(); i++){
-					ShoppingCartItem s = ShoppingCartItem.find.byId(existingItems.get(i).getId());
-					String updStatement = "update shoppingcartitem set quantity = :quantity where shopping_cart_id=:shopping_cart_id and idproduct=:idproduct";
-					Update<ShoppingCartItem> update = Ebean.createUpdate(ShoppingCartItem.class, updStatement);
-					update.set("shopping_cart_id", s.getId());
-					update.set("idproduct", Integer.parseInt(idproduct));
-					update.set("quantity", s.getQuantity()+1);
-					int rows = update.execute();
-
-				}
+				String updStatement = "update shoppingcartitem set quantity = quantity + 1 where shopping_cart_id=:shopping_cart_id and idproduct=:idproduct";
+				Update<ShoppingCartItem> update = Ebean.createUpdate(ShoppingCartItem.class, updStatement);
+				update.set("shopping_cart_id", sp.getId());
+				update.set("idproduct", Integer.parseInt(idproduct));
+				int rows = update.execute();
 			}
 			else{
 				List<ShoppingCartItem> newListItems = Stream.concat(sp.getItems().stream(), items.stream()).collect(Collectors.toList());

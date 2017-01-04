@@ -1,0 +1,45 @@
+@(page: String, isLoggedIn: Boolean, userInfo: Customer, shopItems: List[ShoppingCartItem]))
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	@if(isLoggedIn) {
+	  
+     These are your products in your Shopping cart:
+     <div class="list-group">
+     @if(shopItems.isEmpty) {
+     		There are no products in your shopping cart yet.
+     } else{
+     	<h3>
+     	<form>
+     	<ul>
+     		@for((item, index) <- shopItems.zipWithIndex){
+     		@defining(item.getIdproduct()) {idproduct =>
+     			
+              	<div class="form-group">
+              	<li class="list-group-item list-group-item-action">@item.getProductName(idproduct).toString()}
+              		<div class="col-xs-12">
+              			Quantity:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
+            		</div>
+            	</div>
+     			}
+     			</li>
+     		</ul>
+     		
+     	</h3>
+     	</form>
+     	}
+     </div>
+   } else {
+   	<div class="row">
+   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+	</div>
+   }
+}
+</div>
