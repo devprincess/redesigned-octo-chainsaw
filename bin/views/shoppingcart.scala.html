@@ -14,6 +14,7 @@
      These are your products in your Shopping cart:
      <div class="list-group">
      @if(shopItems.isEmpty) {
+     <br>
      		There are no products in your shopping cart yet.
      } else{
      	<h5>
@@ -25,6 +26,7 @@
               	<div class="form-group">
               	<li class="list-group-item list-group-item-action">
               	<a href='@routes.ProductController.getProduct(idproduct.toString())'>
+              	
               	@item.getProductName(idproduct).toString()</a>
               	
               		<div class="col-xs-12">
@@ -32,7 +34,7 @@
               			Quantity:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
             		</div>
             		<br>
-            		&nbsp;&nbsp;&nbsp;<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'> Delete item</a>	
+            		&nbsp;&nbsp;&nbsp;<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'><img src="@routes.Assets.at("images/delete.png")" width="28" height="28" /></a>	
             		}
             		            		
             	</div>

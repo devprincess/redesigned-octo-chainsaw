@@ -36,3 +36,4 @@ GET		/cart/:idproduct			controllers.ShoppingCartController.addProduct(idproduct)
 
 GET	    /delete/:idproduct			controllers.ShoppingCartController.deleteProduct(idproduct)
 
+
