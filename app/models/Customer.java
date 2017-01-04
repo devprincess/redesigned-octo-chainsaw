@@ -123,8 +123,6 @@ public class Customer extends Model {
 		this.address = address;
 	}
 
-
-
 	public static Finder<Integer,Customer> find = new Finder<Integer,Customer>(Customer.class);
 
 }

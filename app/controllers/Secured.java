@@ -53,6 +53,9 @@ public class Secured extends Security.Authenticator {
 	/**
 	 * Return the email of the logged in user, or null if no logged in user.
 	 *
+	 *	This method is also in charge of the timeout of the session under no activity.
+	 *  (Clears the cookie after more than 5 minutes)
+	 *
 	 * @param ctx the context containing the session
 	 * @return The email of the logged in user, or null if user is not logged in.
 	 */
@@ -60,20 +63,17 @@ public class Secured extends Security.Authenticator {
 
 		String previousTick = ctx.session().get("userTime");
 
-		//For the case of inactivity, log out the user. This parameter (sessionTimeOut) has been set in the application.conf file as 5 minutes.
 		if (previousTick != null && !previousTick.equals("")) {
 			long previousT = Long.valueOf(previousTick);
 			long currentT = new Date().getTime();
 			long timeout = Long.valueOf(configuration.getString("sessionTimeOut")) * 1000 * 60;
 
 			if ((currentT - previousT) > timeout) {
-				// session expired so clear the cookie
 				ctx.session().clear();
 				return null;
 			}
 		}
 
-		//if there is still activity in the application, then update the user time.
 		String tickString = Long.toString(new Date().getTime());
 		ctx.session().put("userTime", tickString);
 		return ctx.session().get("email");

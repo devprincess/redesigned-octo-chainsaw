@@ -56,7 +56,6 @@ public class ProductController extends Controller{
 
 	@Inject HttpExecutionContext ec;
 
-	//Atomic counter to handle the number of views per each product.
 	private final AtomicInteger productViews;
 
 	private final AtomicInteger stockViews;
@@ -109,23 +108,18 @@ public class ProductController extends Controller{
 					public Result apply(Object response) {
 						Product product = Product.class.cast(response);
 
-						//Set the value to the atomic value first
 						productViews.set(product.getViews());
 
-						//Increment this value since it is a new visit
 						productViews.incrementAndGet();
 
-						//update this value in the database for the next try (Use of Ebean ORM Method to update)
 						String updStatement = "update product set views = :views where id=:idproduct";
 						Update<Product> update = Ebean.createUpdate(Product.class, updStatement);
 						update.set("views", productViews.get());
 						update.set("idproduct", product.getId());
 						int rows = update.execute();
 
-						//update the product object as well
 						product.setViews(productViews.get());
 
-						//get the number of items (stock) available for this product
 						Stock stock = Ebean.find(Stock.class)
 								.select("idproduct, quantity")
 								.where()
@@ -134,7 +128,6 @@ public class ProductController extends Controller{
 
 						stockViews.set(stock.getQuantity());
 
-						//Pass all the calculated values to the view in views package: productdesc.scala.html
 						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product, product.getViews(), stockViews.get()));
 					}
 				}, ec.current());
