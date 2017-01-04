@@ -1,47 +1,24 @@
 package controllers;
 
-import static akka.pattern.Patterns.ask;
-
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.ListIterator;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.inject.Inject;
-
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Update;
-
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.util.Timeout;
-import models.Category;
 import models.Customer;
 import models.Product;
 import models.ShoppingCart;
 import models.ShoppingCartItem;
 import models.Stock;
-import play.data.Form;
-import play.data.FormFactory;
-import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
-import scala.compat.java8.FutureConverters;
-import scala.concurrent.duration.Duration;
 import views.html.*;
 
 public class ShoppingCartController extends Controller{
-
-
-	public ShoppingCartController(){
-
-	}
 
 	@Security.Authenticated(Secured.class)
 	public Result addProduct(String idproduct) {
@@ -81,6 +58,15 @@ public class ShoppingCartController extends Controller{
 		}
 
 		Ebean.save(sp);
+
+		List<Stock> stockList = Stock.find.where().eq("idproduct", Integer.parseInt(idproduct)).gt("quantity", 0).findList();
+		if (!stockList.isEmpty()){
+			String updStatement = "update stock set quantity = quantity - 1 where idproduct=:idproduct";
+			Update<Stock> update = Ebean.createUpdate(Stock.class, updStatement);
+			update.set("idproduct", Integer.parseInt(idproduct));
+			int rows = update.execute();
+		}
+
 		return redirect(routes.ShoppingCartController.getProducts());
 	}
 

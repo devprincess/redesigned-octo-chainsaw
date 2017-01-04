@@ -96,30 +96,20 @@ public class CategoryController extends Controller{
 					@Override
 					public Result apply(Object response) {
 
-						//in the case the response is of a type Category, I cast it to obtain the Category inside the message.
 						Category category = Category.class.cast(response);
 
-						//Use of Ebean ORM to find all the products related to this category.
-						//Also notice the use of the Java Framework Collection for List.
 						List<Product> productList = Product.find.where().eq("idcategory", category.getId()).findList();
 
-						//I get the views that this category has from the database, and set it to the atomic integer value of categoryViews
 						categoryViews.set(category.getViews());
-
-						//after setting the initial value of the views for this category, and as this controller is being accessed, I increase the count
 						categoryViews.incrementAndGet();
 
-						//Then I update the value of this new counter for the category to the database using the Ebean ORM functions
 						String updStatement = "update category set views = :views where id=:idcategory";
 						Update<Category> update = Ebean.createUpdate(Category.class, updStatement);
 						update.set("views", categoryViews.get());
 						update.set("idcategory", category.getId());
 						int rows = update.execute();
 
-						//update the category object as well
 						category.setViews(categoryViews.get());
-
-						//Finally I return the values to the view
 						return ok(categorydesc.render("Category Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),category, productList, category.getViews()));
 					}
 				}, ec.current());

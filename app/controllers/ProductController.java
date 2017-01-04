@@ -59,6 +59,8 @@ public class ProductController extends Controller{
 	//Atomic counter to handle the number of views per each product.
 	private final AtomicInteger productViews;
 
+	private final AtomicInteger stockViews;
+
 	/**
 	 * Constructor:
 	 * ------------
@@ -74,9 +76,10 @@ public class ProductController extends Controller{
 	 * @param atomicCounter
 	 */
 	@Inject
-	public ProductController(ActorSystem system, AtomicInteger productViews) {
+	public ProductController(ActorSystem system, AtomicInteger productViews, AtomicInteger stockViews) {
 		this.productActor = system.actorOf(ProductActor.props);
 		this.productViews = productViews;
+		this.stockViews = stockViews;
 	}
 
 	/**
@@ -129,8 +132,10 @@ public class ProductController extends Controller{
 								.eq("idproduct", product.getId())
 								.findList().get(0);
 
+						stockViews.set(stock.getQuantity());
+
 						//Pass all the calculated values to the view in views package: productdesc.scala.html
-						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product, product.getViews(), stock.getQuantity()));
+						return ok(productdesc.render("Product Description", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()),product, product.getViews(), stockViews.get()));
 					}
 				}, ec.current());
 

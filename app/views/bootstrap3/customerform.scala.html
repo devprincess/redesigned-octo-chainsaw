@@ -39,14 +39,17 @@
             <div class="form-group @if(addressField.hasErrors) {has-error}" >
               <input id="@addressField.id" name="@addressField.name" value="@addressField.value.getOrElse("")" class="form-control" placeholder="Address" type="text">
             </div>
+
+            	@if(flash.containsKey("success")) {
+           		<div id="error-message" class="text-danger">
+             		@flash.get("success")
+           		</div>
+         		}
+
             <input class="btn btn-lg btn-success btn-block" type="submit" value="Update your profile">
           </fieldset>
         }
-         @if(flash.containsKey("error")) {
-           <div id="error-message" class="text-danger">
-             @flash.get("error")
-           </div>
-         }
+         
       </div>
     </div>
   </div>

@@ -38,7 +38,6 @@ public class CustomerController extends Controller{
 	@Security.Authenticated(Secured.class)
 	public Result profile() {
 		Form<CustomerFormData> formData = formFactory.form(CustomerFormData.class);
-		//find this user in the database using Ebean ORM
 		List<Customer> users = Customer.find.where().eq("email", session("email")).findList();
 
 		if(!users.isEmpty()) {
@@ -58,7 +57,6 @@ public class CustomerController extends Controller{
 		if (Secured.isLoggedIn(ctx())){
 			Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
 
-			//update info of the user using Ebean ORM
 			String updStatement = "update customer set name = :name, mobile = :mobile, email= :email, pwd= :pwd, gender= :gender, birthdate= :birthdate, address= :address  where id=:idcustomer";
 			Update<Customer> update = Ebean.createUpdate(Customer.class, updStatement);
 
@@ -72,16 +70,16 @@ public class CustomerController extends Controller{
 			update.set("idcustomer", c.getId());
 			int rows = update.execute();
 
-			//since the user might have changed his email, need to clear and set the session again with this change.
 			session().clear();
 			session("email", c.getEmail());
 
 			formData = formData.fill(userData);
-			flash("success", "The info has been updated.");
+			flash("success", "Your information has been updated.");
 		}
 		else{
 			flash("error", "Cannot update the data.");
 		}
-		return redirect("/profile");
+
+		return ok(profile.render("Profile", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData));
 	}
 }

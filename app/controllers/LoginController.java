@@ -77,14 +77,11 @@ public class LoginController extends Controller{
 	 */
 	public Result postLogin() {
 
-		// Get the submitted form data from the request object, and run validation.
 		Form<LoginFormData> formData = formFactory.form(LoginFormData.class);
 		LoginFormData loginData = formData.bindFromRequest().get();
 
-		//find this user in the database using Ebean ORM
 		List<Customer> users = Customer.find.where().eq("email", loginData.email).eq("pwd", loginData.password).findList();
 
-		//if user exists, save the cookie and go to profile page
 		if (!users.isEmpty()){
 			session().clear();
 			session("email", loginData.email);
@@ -92,7 +89,7 @@ public class LoginController extends Controller{
 			return redirect(routes.LoginController.home());
 		}
 		else{
-			//if this user does not exist, return to the login website
+
 			flash("error", "Login credentials not valid.");
 			return redirect(routes.LoginController.login());
 		}
@@ -117,6 +114,9 @@ public class LoginController extends Controller{
 	@Security.Authenticated(Secured.class)
 	public Result home() {
 		List<Category> categories = Category.find.all();
+		if (usersCounter.get()==0) {
+			usersCounter.incrementAndGet();
+		}
 		return ok(home.render("Home", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), categories, usersCounter.get()));
 	}
 
