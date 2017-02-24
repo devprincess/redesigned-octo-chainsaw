@@ -15,6 +15,8 @@ INSERT INTO category(name, views) VALUES	('Electronics', 0);
 INSERT INTO category(name, views) VALUES	('Fashion', 0);
 INSERT INTO category(name, views) VALUES	('Home', 0);
 
+INSERT INTO category(name, views) VALUES	('Flowers', 0);
+
 INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Joana Chavez', '3489245521', 'admin', '123456', 'F', '1988-08-10', 1, '');
 INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Mike Smith', '6786786781', 'test1', '123456', 'F', '1988-06-05', 1,'');
 INSERT INTO customer(name, mobile, email, pwd, gender, birthdate, idpaymethod, address) VALUES ('Jennifer Brown', '5589245521', 'test2', '123456', 'F', '1988-04-23', 1,'');
@@ -36,6 +38,11 @@ INSERT INTO product(name, description, price, idcategory, views) VALUES ('Pants'
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Table','48-inch x 24-inch molded tabletop', 56.00, 4, 0);
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Office chair', 'Multi-colored bonded leather high back gaming chair task chair with pneumatic seat height adjustment and extra footrest.', 40.00, 4, 0);
 INSERT INTO product(name, description, price, idcategory, views) VALUES ('Sofa','Contemporary design coordinates well with any environment',120.00, 4, 0);
+
+INSERT INTO product(name, description, price, idcategory, views) VALUES ('Flower 1','Whatever 1',165.00, 4, 0);
+INSERT INTO product(name, description, price, idcategory, views) VALUES ('Flower 2','some content',30.00, 4, 0);
+INSERT INTO product(name, description, price, idcategory, views) VALUES ('Flower 3','some other content',20.00, 4, 0);
+
 
 INSERT INTO stock(idproduct,quantity) VALUES (1,1);
 INSERT INTO stock(idproduct,quantity) VALUES (2,3);
