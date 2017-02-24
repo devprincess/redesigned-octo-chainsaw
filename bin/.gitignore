@@ -1,7 +1,5 @@
-/models/
 /controllers/
-/actors/
-/views/
-/assets/
-/public/
 /evolutions/
+/models/
+/views/
+/public/

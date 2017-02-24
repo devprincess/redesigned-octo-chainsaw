@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, categoryInfo: Category, products: List[Product], count: Integer)
+@(page: String, isLoggedIn: Boolean, userInfo: User, categoryInfo: Category, products: List[Product], count: Integer)
 
 @Main(page, isLoggedIn, userInfo) {
 <br>
@@ -17,11 +17,12 @@
      </div>
      <br>
 
-     <div class="list-group">
+
+     <div class="grid">
      <h5>
      @for(p <- products) {
      	@defining(p.getId().toString()) {productId => 
-  		<a href='@routes.ProductController.getProduct(productId)'class="list-group-item list-group-item-action"> @p.getName()}</a>	
+  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'> @p.getName()}</a></div>	
 	 }
 	 </h5>
      </div>

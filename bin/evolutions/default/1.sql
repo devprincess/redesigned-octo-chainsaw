@@ -10,19 +10,6 @@ create table category (
   constraint pk_category primary key (id)
 );
 
-create table customer (
-  id                            integer auto_increment not null,
-  name                          varchar(255),
-  mobile                        varchar(255),
-  email                         varchar(255),
-  pwd                           varchar(255),
-  gender                        varchar(255),
-  birthdate                     datetime(6),
-  address                       varchar(255),
-  idpaymethod                   integer,
-  constraint pk_customer primary key (id)
-);
-
 create table o_order (
   id                            integer auto_increment not null,
   idcustomer                    integer,
@@ -57,6 +44,12 @@ create table product (
   constraint pk_product primary key (id)
 );
 
+create table role (
+  id                            integer auto_increment not null,
+  name                          varchar(255),
+  constraint pk_role primary key (id)
+);
+
 create table shippingmethod (
   id                            integer auto_increment not null,
   name                          varchar(255),
@@ -84,6 +77,20 @@ create table stock (
   constraint pk_stock primary key (id)
 );
 
+create table user (
+  id                            integer auto_increment not null,
+  name                          varchar(255),
+  mobile                        varchar(255),
+  email                         varchar(255),
+  pwd                           varchar(255),
+  gender                        varchar(255),
+  birthdate                     datetime(6),
+  address                       varchar(255),
+  idpaymethod                   integer,
+  idrole                        integer,
+  constraint pk_user primary key (id)
+);
+
 alter table o_orderdetail add constraint fk_o_orderdetail_order_id foreign key (order_id) references o_order (id) on delete restrict on update restrict;
 create index ix_o_orderdetail_order_id on o_orderdetail (order_id);
 
@@ -101,8 +108,6 @@ drop index ix_shoppingcartitem_shopping_cart_id on shoppingcartitem;
 
 drop table if exists category;
 
-drop table if exists customer;
-
 drop table if exists o_order;
 
 drop table if exists o_orderdetail;
@@ -111,6 +116,8 @@ drop table if exists paymethod;
 
 drop table if exists product;
 
+drop table if exists role;
+
 drop table if exists shippingmethod;
 
 drop table if exists shoppingcart;
@@ -118,4 +125,6 @@ drop table if exists shoppingcart;
 drop table if exists shoppingcartitem;
 
 drop table if exists stock;
+
+drop table if exists user;
 

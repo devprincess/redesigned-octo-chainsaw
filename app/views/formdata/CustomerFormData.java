@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import models.Customer;
+import models.User;
 
 /**
  * Backing class for updating the profile of a customer.
@@ -30,7 +30,7 @@ public class CustomerFormData {
 
 	}
 
-	public CustomerFormData(Customer c){
+	public CustomerFormData(User c){
 		this.name= c.getName();
 		this.mobile=c.getMobile();
 		this.email=c.getEmail();

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 
-import models.Customer;
+import models.User;
 import play.Application;
 import play.Configuration;
 import play.api.Play;
@@ -94,8 +94,8 @@ public class Secured extends Security.Authenticator {
 	 * @return The UserInfo, or null.
 	 */
 
-	public static Customer getUserInfo(Context ctx) {
-		final List<Customer> customers = Customer.find.where().eq("email", getUser(ctx)).findList();
+	public static User getUserInfo(Context ctx) {
+		final List<User> customers = User.find.where().eq("email", getUser(ctx)).findList();
 		return (isLoggedIn(ctx) ? customers.get(0) : null);
 	}
 }

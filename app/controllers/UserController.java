@@ -13,7 +13,7 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Update;
 
 import models.Category;
-import models.Customer;
+import models.User;
 import models.Product;
 import models.Stock;
 import play.data.Form;
@@ -26,19 +26,19 @@ import views.*;
 import views.html.*;
 import views.formdata.*;
 
-public class CustomerController extends Controller{
+public class UserController extends Controller{
 
 	@Inject FormFactory formFactory;
 
 	@Inject
-	public CustomerController(FormFactory formFactory){
+	public UserController(FormFactory formFactory){
 		this.formFactory = formFactory;
 	}
 
 	@Security.Authenticated(Secured.class)
 	public Result profile() {
 		Form<CustomerFormData> formData = formFactory.form(CustomerFormData.class);
-		List<Customer> users = Customer.find.where().eq("email", session("email")).findList();
+		List<User> users = User.find.where().eq("email", session("email")).findList();
 
 		if(!users.isEmpty()) {
 			CustomerFormData cfd = new CustomerFormData(users.get(0));
@@ -55,10 +55,10 @@ public class CustomerController extends Controller{
 		CustomerFormData userData = formData.bindFromRequest().get();
 
 		if (Secured.isLoggedIn(ctx())){
-			Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
+			User c = User.find.where().eq("email", session("email")).findList().get(0);
 
 			String updStatement = "update customer set name = :name, mobile = :mobile, email= :email, pwd= :pwd, gender= :gender, birthdate= :birthdate, address= :address  where id=:idcustomer";
-			Update<Customer> update = Ebean.createUpdate(Customer.class, updStatement);
+			Update<User> update = Ebean.createUpdate(User.class, updStatement);
 
 			update.set("name", userData.getName());
 			update.set("mobile", userData.getMobile());

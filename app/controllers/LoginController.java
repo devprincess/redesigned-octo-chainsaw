@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 import javax.inject.Inject;
 import models.Category;
-import models.Customer;
+import models.User;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -87,7 +87,7 @@ public class LoginController extends Controller{
 		Form<LoginFormData> formData = formFactory.form(LoginFormData.class);
 		LoginFormData loginData = formData.bindFromRequest().get();
 
-		List<Customer> users = Customer.find.where().eq("email", loginData.email).eq("pwd", loginData.password).findList();
+		List<User> users = User.find.where().eq("email", loginData.email).eq("pwd", loginData.password).findList();
 
 		if (!users.isEmpty()){
 			session().clear();

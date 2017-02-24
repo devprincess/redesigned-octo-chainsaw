@@ -14,8 +14,8 @@ import play.data.validation.*;
  *
  */
 @Entity
-@Table( name= "customer")
-public class Customer extends Model {
+@Table( name= "user")
+public class User extends Model {
 
 	@Id
 	@Constraints.Max(10)
@@ -50,6 +50,9 @@ public class Customer extends Model {
 
 	@Constraints.Required
 	private Integer idpaymethod;
+
+	@Constraints.Required
+	private Integer idrole;
 
 	public Integer getId() {
 		return id;
@@ -115,6 +118,14 @@ public class Customer extends Model {
 		this.idpaymethod = idpaymethod;
 	}
 
+	public Integer getIdrole() {
+		return idrole;
+	}
+
+	public void setIdrole(Integer idrole) {
+		this.idrole = idrole;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -123,6 +134,6 @@ public class Customer extends Model {
 		this.address = address;
 	}
 
-	public static Finder<Integer,Customer> find = new Finder<Integer,Customer>(Customer.class);
+	public static Finder<Integer,User> find = new Finder<Integer,User>(User.class);
 
 }

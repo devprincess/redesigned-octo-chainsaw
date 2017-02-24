@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.SqlUpdate;
 import com.avaje.ebean.Update;
-import models.Customer;
+import models.User;
 import models.Product;
 import models.ShoppingCart;
 import models.ShoppingCartItem;
@@ -37,7 +37,7 @@ public class ShoppingCartController extends Controller{
 	@Security.Authenticated(Secured.class)
 	public Result deleteProduct(String idproduct) {
 
-		Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
+		User c = User.find.where().eq("email", session("email")).findList().get(0);
 		List<ShoppingCart> lsp= ShoppingCart.find.where().eq("idcustomer", c.getId()).findList();
 		ShoppingCart sp = new ShoppingCart();
 		sp = lsp.get(0);
@@ -71,7 +71,7 @@ public class ShoppingCartController extends Controller{
 	@Security.Authenticated(Secured.class)
 	public Result addProduct(String idproduct) {
 
-		Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
+		User c = User.find.where().eq("email", session("email")).findList().get(0);
 		List<ShoppingCart> lsp= ShoppingCart.find.where().eq("idcustomer", c.getId()).findList();
 		ShoppingCart sp = new ShoppingCart();
 
@@ -122,7 +122,7 @@ public class ShoppingCartController extends Controller{
 	@Security.Authenticated(Secured.class)
 	public Result getProducts(){
 
-		Customer c = Customer.find.where().eq("email", session("email")).findList().get(0);
+		User c = User.find.where().eq("email", session("email")).findList().get(0);
 
 		List<ShoppingCart> lsp= ShoppingCart.find.where().eq("idcustomer", c.getId()).findList();
 		ShoppingCart sp = new ShoppingCart();

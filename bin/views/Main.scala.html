@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer)(content: Html)
+@(page: String, isLoggedIn: Boolean, userInfo: User)(content: Html)
 
 <!DOCTYPE html>
 
@@ -11,6 +11,8 @@
         <!--  Load site-specific customizations after bootstrap. -->
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        
+        <script src="@routes.Assets.at("javascripts/masonry.pkgd.min.js")"></script>
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -40,10 +42,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           @if(isLoggedIn) {
-            <li><a href="@routes.CustomerController.profile()">@userInfo.getEmail()</a></li>
+            <li><a href="@routes.UserController.profile()">@userInfo.getEmail()</a></li>
             <li><a href="@routes.ShoppingCartController.getProducts()">My shopping cart</a></li>
             <li><a href="@routes.LoginController.logout()">Logout</a></li>
-            <li><a href="@routes.AsyncController.asyncLogOut()">Async Logout</a></li>
           } else {
             <li><a href="@routes.LoginController.login()">Login</a></li>
           }

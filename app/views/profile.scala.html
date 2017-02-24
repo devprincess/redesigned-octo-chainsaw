@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, customerForm: Form[views.formdata.CustomerFormData])
+@(page: String, isLoggedIn: Boolean, userInfo: User, customerForm: Form[views.formdata.CustomerFormData])
 
 @import bootstrap3._
 
@@ -11,7 +11,7 @@
 <div class="container">
 	@if(isLoggedIn) {
 	  
-     	@customerform(routes.CustomerController.updateInfo(), 
+     	@customerform(routes.UserController.updateInfo(), 
      					customerForm("name"),
      					customerForm("mobile"), 
      					customerForm("email"), 

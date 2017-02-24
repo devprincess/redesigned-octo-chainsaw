@@ -5,3 +5,7 @@ body {
 .form-shop{
 width: 5%;
 }
+
+.grid-item { width: 200px; }
+
+.grid-item--width2 { width: 400px; }
