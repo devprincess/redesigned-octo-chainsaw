@@ -1,3 +1,3 @@
-# CDS Mini Store
+# Jurel App
 
-Web application based in Play Framework using Akka Libraries, CompletionStage for returning requests, Java 8 concurrency libraries.
+Tienda online para venta de productos electronicos
