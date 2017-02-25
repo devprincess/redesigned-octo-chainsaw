@@ -41,6 +41,7 @@ create table product (
   price                         double,
   idcategory                    integer,
   views                         integer,
+  url                           varchar(255),
   constraint pk_product primary key (id)
 );
 

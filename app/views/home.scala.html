@@ -8,7 +8,7 @@
 <br>
 <div class="container">
 	@if(isLoggedIn) {
-     <h5><p> Bienvenido a JurelApp, te ofrecemos los siguientes productos </p>
+     <h5><p> Bienvenido a JurelApp! te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
     
      <div class="list-group">
      <h5>
@@ -20,7 +20,7 @@
 	 </div>
    } else {
    	<div class="row">
-   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aqui para ingresar a la tienda</a>
 	</div>
    }
 }

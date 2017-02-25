@@ -37,6 +37,9 @@ public class Product extends Model {
 	@Column(name="views")
 	private Integer views;
 
+	@Column(name="url")
+	private String url;
+
 	public Integer getId() {
 		return id;
 	}
@@ -83,6 +86,14 @@ public class Product extends Model {
 
 	public void setViews(Integer views) {
 		this.views = views;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public static Finder<Integer,Product> find = new Finder<>(Product.class);

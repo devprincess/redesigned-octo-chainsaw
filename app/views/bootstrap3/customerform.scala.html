@@ -13,31 +13,31 @@
   <div class="col-sm-4 col-sm-offset-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Update your profile</h3>
+        <h3 class="panel-title">Actualiza tu perfil</h3>
       </div>
       <div class="panel-body">
         @helper.form(reverseRoute, 'role -> "form") {
           <fieldset>
           	<div class="form-group @if(nameField.hasErrors) {has-error}" >
-              <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Name" type="text">
+              <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
             </div>
             <div class="form-group @if(mobileField.hasErrors) {has-error}" >
-              <input id="@mobileField.id" name="@mobileField.name" value="@mobileField.value.getOrElse("")" class="form-control" placeholder="Mobile" type="text">
+              <input id="@mobileField.id" name="@mobileField.name" value="@mobileField.value.getOrElse("")" class="form-control" placeholder="Teléfono de contacto" type="text">
             </div>
             <div class="form-group @if(emailField.hasErrors) {has-error}" >
-              <input id="@emailField.id" name="@emailField.name" value="@emailField.value.getOrElse("")" class="form-control" placeholder="E-mail" type="text">
+              <input id="@emailField.id" name="@emailField.name" value="@emailField.value.getOrElse("")" class="form-control" placeholder="Correo electrónico (E-mail)" type="text">
             </div>
             <div class="form-group @if(passwordField.hasErrors) {has-error}" >
-              <input id="@passwordField.id" name="@passwordField.name" value="@passwordField.value.getOrElse("")" class="form-control" placeholder="Password" type="password">
+              <input id="@passwordField.id" name="@passwordField.name" value="@passwordField.value.getOrElse("")" class="form-control" placeholder="Contraseña" type="password">
             </div>
             <div class="form-group @if(genderField.hasErrors) {has-error}" >
-              <input id="@genderField.id" name="@genderField.name" value="@genderField.value.getOrElse("")" class="form-control" placeholder="Gender" type="text">
+              <input id="@genderField.id" name="@genderField.name" value="@genderField.value.getOrElse("")" class="form-control" placeholder="Género" type="text">
             </div>
             <div class="form-group @if(birthdateField.hasErrors) {has-error}" >
-              <input id="@birthdateField.id" name="@birthdateField.name" value="@birthdateField.value.getOrElse("")" class="form-control" placeholder="Birthdate" type="text">
+              <input id="@birthdateField.id" name="@birthdateField.name" value="@birthdateField.value.getOrElse("")" class="form-control" placeholder="Fecha de nacimiento" type="text">
             </div>
             <div class="form-group @if(addressField.hasErrors) {has-error}" >
-              <input id="@addressField.id" name="@addressField.name" value="@addressField.value.getOrElse("")" class="form-control" placeholder="Address" type="text">
+              <input id="@addressField.id" name="@addressField.name" value="@addressField.value.getOrElse("")" class="form-control" placeholder="Dirección de domicilio" type="text">
             </div>
 
             	@if(flash.containsKey("success")) {
@@ -46,7 +46,7 @@
            		</div>
          		}
 
-            <input class="btn btn-lg btn-success btn-block" type="submit" value="Update your profile">
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Actualizar">
           </fieldset>
         }
          

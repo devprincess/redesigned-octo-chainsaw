@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer)
+@(page: String, isLoggedIn: Boolean, userInfo: User)
 
 @Main(page, isLoggedIn, userInfo) {
 <br>
@@ -9,25 +9,9 @@
 
      <div class="row">
        <div class="col-sm-10 col-sm-offset-1">
-       <h2>Welcome to the CDS Store</h2>
-       <div text-justify: inter-word;>
-       <p align="justify">The purpose of this project is to show how can we apply the Actor-Message Passing model from Akka using Play Framework in a web application.
-       	  Play Framework ensures that the backend of the application to handle the requests are done using asynchronous calls using Akka internally and 
-       	  that it also can handle a great amount of calls without blocking using the Actor message passing model. Of course, to ensure that the framework works this way,
-       	  the controllers in this application have been implemented in 2 different ways: In one (LoginController) is the typical use
-       	  of a controller returning a Result (That is the way of how Play tipically solves the requests and internally it uses concurrent libraries such as CompletionStage). 
-       	  To take advantage of the use of CompletionStage, 2 controllers have been added using this approach: CategoryController and ProductController.
-       	  
-       	  For the session what has been used is a class called Secured which is an authenticator class that handles the session everytime the user logs in or out. It has also been
-       	  considered the case for a timeout in the session. (session time out of 5 minutes due to inactivity)
-       	  
-       	  For the database what has been used is the Ebean ORM, in which the evolution scripts are being handled inside the conf package of the current project.
-       	  (1.sql: for the creation of the tables schema and 2.sql: for the insertion of the initial values in the database)
-       	  All the configuration for the dependencies has been set using the Maven pom.xml file and the configuration of the application is specified in the application.conf file of the project.
-       	  
-       </p>
-       </div>
-       <a href="@routes.LoginController.login()">Log in to start the project</a>
+       <h5>
+       Bienvenido a Jurelapp
+       </h5>
        </div>
 	</div>
 </div>

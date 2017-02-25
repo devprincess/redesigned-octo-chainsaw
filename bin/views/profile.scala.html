@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, customerForm: Form[views.formdata.CustomerFormData])
+@(page: String, isLoggedIn: Boolean, userInfo: User, customerForm: Form[views.formdata.CustomerFormData])
 
 @import bootstrap3._
 
@@ -11,7 +11,7 @@
 <div class="container">
 	@if(isLoggedIn) {
 	  
-     	@customerform(routes.CustomerController.updateInfo(), 
+     	@customerform(routes.UserController.updateInfo(), 
      					customerForm("name"),
      					customerForm("mobile"), 
      					customerForm("email"), 
@@ -22,7 +22,7 @@
       
    } else {
    	<div class="row">
-   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+   		Tu sesión ha terminado por inactividad. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aquí para ingresar de nuevo</a> .
 	</div>
    }
 }

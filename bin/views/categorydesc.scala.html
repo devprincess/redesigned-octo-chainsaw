@@ -9,10 +9,10 @@
 <div class="container">
 @if(isLoggedIn) {     
      <div class="row">
-     	<h5><p class="text-danger">Category: @categoryInfo.getName()</p></h5>
-     	<h5><p>(This category has been seen: @count times)</p></h5>
+     	<h5><p class="text-danger">Categoría: @categoryInfo.getName()</p></h5> 
+     	<h5><p>(Esta categoría ha sido vista: @count veces)</p></h5>
      	<br>
-     	<a href='@routes.LoginController.home()' class="btn btn-info" role="button" aria-pressed="true">Return to Initial Page</a>
+     	<a href='@routes.LoginController.home()' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías</a>
      	<br>
      </div>
      <br>
@@ -22,13 +22,22 @@
      <h5>
      @for(p <- products) {
      	@defining(p.getId().toString()) {productId => 
-  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'> @p.getName()}</a></div>	
+  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'><div class="desc-image"><img border="0" src="@p.getUrl()"/> </div> @p.getName()}</a></div>	
 	 }
 	 </h5>
      </div>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     
 }else{
 	<div class="row">
-		<p>Session Timed out. <a href="@routes.LoginController.login()">Return to Log in</a></p>
+		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
 	</div>
    }
 }

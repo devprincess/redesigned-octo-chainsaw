@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: Customer, shopItems: List[ShoppingCartItem]))
+@(page: String, isLoggedIn: Boolean, userInfo: User, shopItems: List[ShoppingCartItem]))
 
 @import bootstrap3._
 
@@ -11,11 +11,11 @@
 <div class="container">
 	@if(isLoggedIn) {
       
-     These are your products in your Shopping cart:
+     Estos son los productos agregados a tu carrito de compras:
      <div class="list-group">
      @if(shopItems.isEmpty) {
      <br>
-     		There are no products in your shopping cart yet.
+     	No hay productos en tu carrito de compras por el momento. 
      } else{
      	<h5>
      	<form>
@@ -31,7 +31,7 @@
               	
               		<div class="col-xs-12">
               		<br>
-              			Quantity:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
+              			Cantidad:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
             		</div>
             		<br>
             		&nbsp;&nbsp;&nbsp;<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'><img src="@routes.Assets.at("images/delete.png")" width="28" height="28" /></a>	
@@ -48,7 +48,7 @@
      </div>
    } else {
    	<div class="row">
-   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click here</a> to return to log in.
+   		Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Click aquí para ingresar de nuevo</a>.
 	</div>
    }
 }

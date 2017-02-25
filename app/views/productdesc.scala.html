@@ -13,25 +13,25 @@
   		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Return to the category}</a>
      </div>
     
-    <h5>(This product has been seen: @count times)</h5>
+    <h5>(Este producto ha sido visitado: @count veces)</h5>
      <div>
      <h5>
      	<p class="text-success">@productInfo.getName()</p>
-     	<p class="text-warning">Price (Euro):  @productInfo.getPrice()</p>
+     	<p class="text-warning">Precio (soles):  @productInfo.getPrice()</p>
      	@if(stock>0){
-     	<p class="text-danger">There are @stock items available<p>
+     	<p class="text-danger">Hay @stock productos disponibles<p>
      	@defining(productInfo.getId().toString()) {productId => 
-     	<a href='@routes.ShoppingCartController.addProduct(productId)' type="button" class="btn btn-danger">Add to shopping cart}</a>
+     	<a href='@routes.ShoppingCartController.addProduct(productId)' type="button" class="btn btn-danger">Agregar a mi carrito}</a>
      	
      	} else{
-     	<p class="text-danger">There are no items available in stock.<p>
+     	<p class="text-danger">No hay stock disponible de este producto por el momento. ¿Deseas realizar un pedido? <a href="#">Ingresa aquí</a><p>
      	}	
      	<p class="bg-info" align="justify"> @productInfo.getDescription()</p>
      </h5>
      </div>
      } else {
    	<div class="row">
-		<a href="@routes.LoginController.login()">Session Timed out. Return to Log in</a>
+		<a href="@routes.LoginController.login()">Tu sesión se ha terminado por inactividad. Ingresa aquí </a>
 	</div>
    }
 }
