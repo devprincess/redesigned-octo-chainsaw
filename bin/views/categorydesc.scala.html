@@ -22,7 +22,7 @@
      <h5>
      @for(p <- products) {
      	@defining(p.getId().toString()) {productId => 
-  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'><div class="desc-image"><img border="0" src="@p.getUrl()"/> </div> @p.getName()}</a></div>	
+  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'><div class="desc-image"><img border="0" src="@p.getUrl()"/> </div> <div class='blocktitle'><div class="title">@p.getName()}</div></div></a></div>	
 	 }
 	 </h5>
      </div>

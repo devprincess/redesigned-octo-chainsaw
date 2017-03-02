@@ -28,9 +28,20 @@ float:left;
   height: 200px;
   float: left;
   background: #fff;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
+  border: 1px solid #fff;
   border-radius: 5px;
+}
+
+.blocktitle{
+	position: relative;
+}
+
+.title{
+	margin: 0;
+	position:absolute;
+	left:50%;
+	margin-right: -50%;
+	transform: translate(-50%, 30%)
 }
 
 .desc-image img {

@@ -25,7 +25,11 @@ public class Category extends Model {
 	@Constraints.Required
 	private String name;
 
+	@Column(name="views")
 	private Integer views;
+
+	@Column(name="url")
+	private String url;
 
 	public Integer getViews() {
 		return views;
@@ -49,6 +53,14 @@ public class Category extends Model {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public static Finder<Integer,Category> find = new Finder<Integer,Category>(Category.class);

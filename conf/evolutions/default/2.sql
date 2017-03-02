@@ -10,10 +10,10 @@ INSERT INTO paymethod(name)	VALUES ('Mastercard');
 INSERT INTO shippingmethod(name) VALUES ('UPS');
 INSERT INTO shippingmethod(name) VALUES ('Fedex');
 
-INSERT INTO category(name, views) VALUES   ('Books', 0);
-INSERT INTO category(name, views) VALUES	('Electronics', 0);
-INSERT INTO category(name, views) VALUES	('Fashion', 0);
-INSERT INTO category(name, views) VALUES	('Home', 0);
+INSERT INTO category(name, views, url) VALUES   ('Books', 0, '/assets/images/books.jpg');
+INSERT INTO category(name, views, url) VALUES	('Electronics', 0, '/assets/images/books.jpg');
+INSERT INTO category(name, views, url) VALUES	('Fashion', 0, '/assets/images/books.jpg');
+INSERT INTO category(name, views, url) VALUES	('Home', 0, '/assets/images/books.jpg');
 
 INSERT INTO role(name) VALUES ('admin');
 INSERT INTO role(name) VALUES ('employee');
@@ -25,7 +25,7 @@ INSERT INTO user(name, mobile, email, pwd, gender, birthdate, idpaymethod, addre
 INSERT INTO user(name, mobile, email, pwd, gender, birthdate, idpaymethod, address, idrole) VALUES ('Cliente', '5589245521', 'cliente', '123456', 'F', '1988-04-23', 1,'', 3);
 INSERT INTO user(name, mobile, email, pwd, gender, birthdate, idpaymethod, address, idrole) VALUES ('Empleado', '7789255521', 'empleado', '123456', 'F', '1988-01-30', 1,'', 2);
 
-INSERT INTO product(name, description, price, idcategory, views, url) VALUES ('Harry Potter: Harry Potter and the Sorcerers Stone', 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harrys eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 23.00, 1, 0, '/assets/images/camera.jpg');
+INSERT INTO product(name, description, price, idcategory, views, url) VALUES ('Harry Potter: Harry Potter and the Sorcerers Stone', 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harrys eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 23.00, 1, 0, '/assets/images/books.jpg');
 INSERT INTO product(name, description, price, idcategory, views, url) VALUES ('Harry Potter: Harry Potter and the Cursed Child','Based on an original new story by J.K. Rowling, John Tiffany and Jack Thorne, a new play by Jack Thorne, Harry Potter and the Cursed Child is the eighth story in the Harry Potter series and the first official Harry Potter story to be presented on stage. The play will receive its world premiere in Londons West End on 30th July 2016.', 30.00, 1, 0,  '/assets/images/camera.jpg');
 INSERT INTO product(name, description, price, idcategory, views, url) VALUES ('Harry Potter: Harry Potter and the Chamber of Secrets','Harry Potters summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone . Dobbys sinister predictions seem to be coming true.', 35.20, 1, 0,  '/assets/images/camera.jpg');
 INSERT INTO product(name, description, price, idcategory, views, url) VALUES ('Harry Potter: Harry Potter and the Half Blood Prince','When Dumbledore arrives at Privet Drive one summer night to collect Harry Potter, his wand hand is blackened and shrivelled, but he does not reveal why. Secrets and suspicion are spreading through the wizarding world, and Hogwarts itself is not safe. Harry is convinced that Malfoy bears the Dark Mark: there is a Death Eater amongst them. Harry will need powerful magic and true friends as he explores Voldemort darkest secrets, and Dumbledore prepares him to face his destiny.', 33.50, 1, 0, '/assets/images/camera.jpg');
@@ -65,7 +65,7 @@ INSERT INTO stock(idproduct,quantity) VALUES (13,1);
 DELETE FROM paymethod;
 DELETE FROM role;
 DELETE FROM category;
-DELETE FROM customer;
+DELETE FROM user;
 DELETE FROM product;
 DELETE FROM stock;
 DELETE FROM shippingmethod;

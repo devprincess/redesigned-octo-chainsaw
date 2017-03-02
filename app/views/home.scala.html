@@ -10,17 +10,18 @@
 	@if(isLoggedIn) {
      <h5><p> Bienvenido a JurelApp! te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
     
-     <div class="list-group">
+    <div class="grid">
      <h5>
      @for(c <- categories) {
-     	@defining(c.getId().toString()) {categoryId => 
-  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="list-group-item list-group-item-action">@c.getName()}</a>
+     	@defining(c.getId().toString()) {categoryId =>  
+  		<div class="grid-item grid-item--width2"><a href='@routes.CategoryController.getProductsByCategory(categoryId)'><div class="desc-image"><img border="0" src="@c.getUrl()"/> </div><div class='blocktitle'><div class="title"> @c.getName()}</div></div></a></div>	
 	 }
 	 </h5>
-	 </div>
+     </div>
+    
    } else {
    	<div class="row">
-   		Your session has timed out. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aqui para ingresar a la tienda</a>
+   		Tu sesión ha terminado por inactividad.  <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aqui para ingresar a la tienda</a>
 	</div>
    }
 }

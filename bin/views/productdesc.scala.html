@@ -9,8 +9,8 @@
 <div class="container">
 @if(isLoggedIn) {   
      <div class="row">
-     	<h5><p class="text-danger">Information about the product</h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
-  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Return to the category}</a>
+     	<h5><p class="text-danger">Información del producto: </h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías}</a>
      </div>
     
     <h5>(Este producto ha sido visitado: @count veces)</h5>

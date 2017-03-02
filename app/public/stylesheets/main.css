@@ -12,8 +12,14 @@ width: 200px;
 
 .grid-item--width2 {
 width: 100px; 
+position: relative;
 }
 
+.title{
+	position: absolute;
+	text-align: justify;
+	left: 50%;
+}
 
 .desc-image{
 width: 100px;

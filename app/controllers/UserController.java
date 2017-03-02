@@ -57,7 +57,7 @@ public class UserController extends Controller{
 		if (Secured.isLoggedIn(ctx())){
 			User c = User.find.where().eq("email", session("email")).findList().get(0);
 
-			String updStatement = "update customer set name = :name, mobile = :mobile, email= :email, pwd= :pwd, gender= :gender, birthdate= :birthdate, address= :address  where id=:idcustomer";
+			String updStatement = "update user set name = :name, mobile = :mobile, email= :email, pwd= :pwd, gender= :gender, birthdate= :birthdate, address= :address  where id=:idcustomer";
 			Update<User> update = Ebean.createUpdate(User.class, updStatement);
 
 			update.set("name", userData.getName());
