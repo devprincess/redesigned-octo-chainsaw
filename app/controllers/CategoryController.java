@@ -21,6 +21,7 @@ import models.Product;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
 
@@ -116,5 +117,14 @@ public class CategoryController extends Controller{
 
 		return source;
 	}
+
+	/*
+
+	public Result addCategory(){
+
+		Category cat = new Category();
+		cat.insert();
+
+	}*/
 }
 

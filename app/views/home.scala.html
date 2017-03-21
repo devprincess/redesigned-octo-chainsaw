@@ -8,6 +8,46 @@
 <br>
 <div class="container">
 	@if(isLoggedIn) {
+	
+	@if(userInfo.getIdrole()==1){
+		
+		<div class="panel panel-info panel-leftside">
+		  <div class="panel-heading">Opciones</div>
+		  <div class="panel-body">
+		    Perfil
+		  </div>
+		  <div class="panel-body">
+		    Categorías
+		  </div>
+		  <div class="panel-body">
+		    Productos
+		  </div>
+		</div>
+		
+	} else {
+	 	@if(userInfo.getIdrole()==2){
+	 	
+	 	<div class="panel panel-info panel-leftside">
+		  <div class="panel-heading">Opciones</div>
+		  <div class="panel-body">
+		    Perfil
+		  </div>
+		</div>
+	 	
+	 } else {
+	 	@if(userInfo.getIdrole()==3){
+	 	
+	 	<div class="panel panel-info panel-leftside">
+		  <div class="panel-heading">Opciones</div>
+		  <div class="panel-body">
+		    Perfil
+		  </div>
+		</div>
+	 	
+	 	}
+	 }
+	}
+	
      <h5><p> Bienvenido a JurelApp! te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
     
     <div class="grid">

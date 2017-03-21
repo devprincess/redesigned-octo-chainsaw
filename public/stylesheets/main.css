@@ -48,3 +48,33 @@ float:left;
    height: 100%;
    width: 100%;
 }
+
+.panel-leftside{
+
+	width: 20%;
+	float:left;
+	margin-right: 10px; 
+	
+}
+
+.logo-text{
+	font-family: 'Rubik', sans-serif;
+	font-size: 70px;
+	font-color: #000;
+	font-weight: bold;
+}
+
+.logo-subtext{
+	font-family: 'Rubik', sans-serif;
+	font-size: 35px;
+	font-color: #000;
+	font-weight: bold;
+}
+
+.content-text{
+	font-family: 'Rubik', sans-serif;
+	font-size: 30px;
+	font-color: #000;
+	text-align: justify;
+}
+

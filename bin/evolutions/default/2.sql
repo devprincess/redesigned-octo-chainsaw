@@ -15,9 +15,9 @@ INSERT INTO category(name, views, url) VALUES	('Electronics', 0, '/assets/images
 INSERT INTO category(name, views, url) VALUES	('Fashion', 0, '/assets/images/books.jpg');
 INSERT INTO category(name, views, url) VALUES	('Home', 0, '/assets/images/books.jpg');
 
-INSERT INTO role(name) VALUES ('admin');
-INSERT INTO role(name) VALUES ('employee');
-INSERT INTO role(name) VALUES ('client');
+INSERT INTO role(name) VALUES ('admin'); -- admin is role 1
+INSERT INTO role(name) VALUES ('employee'); -- employee role 2
+INSERT INTO role(name) VALUES ('client'); -- client role 3
 
 
 INSERT INTO user(name, mobile, email, pwd, gender, birthdate, idpaymethod, address, idrole) VALUES ('Joana Chavez', '3489245521', 'admin', '123456', 'F', '1988-08-10', 1, '', 1);
