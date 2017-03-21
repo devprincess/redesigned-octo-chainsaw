@@ -118,13 +118,5 @@ public class CategoryController extends Controller{
 		return source;
 	}
 
-	/*
-
-	public Result addCategory(){
-
-		Category cat = new Category();
-		cat.insert();
-
-	}*/
 }
 
