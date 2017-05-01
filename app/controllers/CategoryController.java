@@ -10,6 +10,7 @@ import java.util.function.Function;
 import javax.inject.Inject;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.SqlUpdate;
 import com.avaje.ebean.Update;
 
 import actors.CategoryActor;
@@ -18,6 +19,10 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import models.Category;
 import models.Product;
+import models.ShoppingCart;
+import models.ShoppingCartItem;
+import models.Stock;
+import models.User;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
