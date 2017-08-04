@@ -2,58 +2,73 @@
 
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>CDS Store</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        
-        <!--  Load site-specific customizations after bootstrap. -->
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<html lang="es">
+<head>
+        <title>JurelApps</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--  Load site-specific customizations besides bootstrap. -->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">        
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        
+        <!-- Font style for the whole website -->        
         <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+        
+        <!-- Bootstrap core CSS -->
+   		<link rel="stylesheet" href="@routes.Assets.at("vendor/bootstrap/css/bootstrap.min.css")"> 
+
+    	<!-- Some other custom fonts for this template -->
+    	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("vendor/font-awesome/css/font-awesome.min.css")">
+
+    	<!-- Plugin CSS -->
+    	<link rel="stylesheet" href="@routes.Assets.at("vendor/datatables/dataTables.bootstrap4.css")">
+
+    	<!-- Custom styles for this template -->
+   		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/sb-admin.css")">
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
           <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
         <![endif]-->
-    </head>
+</head>
     <body>
     
      <!-- Responsive navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <!--  Display three horizontal lines when navbar collapsed. -->
-          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="@routes.LoginController.home()">Jurelaps</a>
-      </div>
-      
-      
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-left">
-          @if(isLoggedIn) {
-            <li class="@("active".when(page == "Profile"))"><a href="@routes.LoginController.home()">Ver productos</a></li>
-          }
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          @if(isLoggedIn) {
-            <li><a href="@routes.UserController.profile()">@userInfo.getEmail()</a></li>
-            <li><a href="@routes.ShoppingCartController.getProducts()">Mi carrito</a></li>
-            <li><a href="@routes.LoginController.logout()">Salir</a></li>
-          } else {
-            <li><a href="@routes.LoginController.login()">Ingresa</a></li>
-          }
-
-        </ul>
-      </div>
-    </div>
-    
-  </div>
+		<nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+        			<span class="navbar-toggler-icon"></span>
+        		</button>
+        		<!-- Logo inserted here, by now just the name -->
+      			<a class="navbar-brand" href="@routes.LoginController.home()">Jurelaps</a>
+      			<!-- The bar in the left side -->
+				<div class="collapse navbar-collapse navbar-ex1-collapse" id="navbarExample">
+					<ul class="nav navbar-nav side-nav">
+						@if(isLoggedIn) {
+	            			<!--  Ver productos -->
+	            			<li class="nav-item active">
+                    			<a class="nav-link" href="@routes.LoginController.home()"><i class="fa fa-fw fa-product-hunt"></i> Ver Productos </a>
+                			</li>                
+               		<!--  <li class="@("active".when(page == "Profile"))"><a href="@routes.LoginController.home()">Ver productos</a></li>-->    
+	            			<!-- User info -->
+	            			<li class="nav-item">
+	            				<a class= "nav-link" href="@routes.UserController.profile()"><i class="fa fa-fw fa-user"></i> @userInfo.getEmail()</a>
+	            			</li>
+	            			<!-- Carrito de compras -->
+	            			<li class="nav-item">
+	            				<a class="nav-link" href="@routes.ShoppingCartController.getProducts()"><i class="fa fa-fw fa-shopping-cart"></i> Mi carrito</a>
+	            			</li>
+	            			<!-- Salir -->
+	            			<li class="nav-item">
+	            				<a class="nav-link" href="@routes.LoginController.logout()"><i class="fa fa-fw fa-sign-in"></i> Salir</a>
+	            			</li>
+	          	   		}else{ 
+							<li class="nav-item">
+								<a class="nav-link" href="@routes.LoginController.login()">Ingresa</a>
+							</li>
+	          			}
+					</ul>	
+				</div>
+		</nav>
+		
       @content
       <!-- Load Bootstrap JavaScript components. HTMLUnit (used in testing) requires JQuery 1.8.3 or below). -->
       <script src="@routes.Assets.at("javascripts/masonry.pkgd.min.js")"></script>

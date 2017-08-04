@@ -1,13 +1,12 @@
-body {
-  padding-top: 70px;  /* Move body of page below navbar. */
-}
 
 .form-shop{
 width: 5%;
 }
 
-.grid{
+.row{
 
+margin-left:auto;
+margin-right:auto;
 }
 
 /* clearfix */
