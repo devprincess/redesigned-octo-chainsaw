@@ -1,49 +1,13 @@
 @(page: String, isLoggedIn: Boolean, userInfo: User, categories: List[Category], countUsers: Integer)
 
 @Main(page, isLoggedIn, userInfo) {
-<div class="container">
+<div class="container outer">
 	@if(isLoggedIn) {
 	
-	@if(userInfo.getIdrole()==1){
-		
-		<div class="panel panel-info panel-leftside">
-		  <div class="panel-heading">Opciones</div>
-		  <div class="panel-body">
-		    Actualizar mi perfil
-		  </div>
-		  <div class="panel-body">
-		    <a href="@routes.CategoryListController.list()">Administrar Categorías</a>
-		  </div>
-		  <div class="panel-body">
-		    <a href="@routes.ProductListController.list()">Administrar Productos</a>
-		  </div>
-		</div>
-		
-	} else {
-	 	@if(userInfo.getIdrole()==2){
-	 	
-	 	<div class="panel panel-info panel-leftside">
-		  <div class="panel-heading">Opciones</div>
-		  <div class="panel-body">
-		    Perfil
-		  </div>
-		</div>
-	 	
-	 } else {
-	 	@if(userInfo.getIdrole()==3){
-	 	
-	 	<div class="panel panel-info panel-leftside">
-		  <div class="panel-heading">Opciones</div>
-		  <div class="panel-body">
-		    Perfil
-		  </div>
-		</div>
-	 	
-	 	}
-	 }
-	}
-	
-     <h5><p> Bienvenido a JurelApp! te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
+
+	<div class="usercontent inner gallery">
+     <h5><p class="grayfont"> Bienvenido a JurelApp!</p>
+     <p class="grayfont"> Te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
     
     <div class="grid">
      <h5>
@@ -53,10 +17,13 @@
 	 }
 	 </h5>
      </div>
+     </div>
     
    } else {
-   	<div class="row">
+   <div class="usercontent inner">
+   	<div class="row inner">
    		Tu sesión ha terminado por inactividad.  <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aqui para ingresar a la tienda</a>
+	</div>
 	</div>
    }
 }

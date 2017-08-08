@@ -1,12 +1,19 @@
+/*This one needs to be replicated*/
+
+
+#mainNav{
+	background-color:#1B676B!important;
+}
+body{
+	background: #EAFDE6!important;
+}
 
 .form-shop{
 width: 5%;
 }
 
 .row{
-
-margin-left:auto;
-margin-right:auto;
+margin-left:-50%;
 }
 
 /* clearfix */
@@ -26,8 +33,8 @@ float:left;
   width: 200px;
   height: 200px;
   float: left;
-  background: #fff;
-  border: 1px solid #fff;
+  background: #EAFDE6;
+  border: 5px solid #EAFDE6;
   border-radius: 5px;
 }
 
@@ -77,3 +84,79 @@ float:left;
 	text-align: justify;
 }
 
+.navbaruser{
+	width:250px;
+	left: 0px;
+	min-height: 60px;
+}
+
+.usercontent{
+	float:left;
+	margin-top: 100px;
+}
+
+.inner{
+	margin: 0 auto;
+}
+
+.outer{
+	width: 100%;
+}
+
+.gallery{
+	margin-top: 100px;
+}
+
+.turquoisefont{
+	color: #1B676B;
+}
+
+.turquoiseback{
+	background: #1B676B;
+}
+
+.greenfont{
+	color: #519548;
+}
+
+.greenback{
+	background: #519548;
+}
+
+.limefont{
+	color: #88C425;
+}
+
+.limeback{
+	background: #88C425;
+}
+
+.grellowfont{
+	color: #BEF202;
+}
+
+.grellowback{
+	background: #BEF202;
+}
+
+.basefont{
+	color: #EAFDE6;
+}
+
+.baseback{
+	background: #EAFDE6;
+}
+
+.btn-success{
+	background-color: #88C425!important;
+	border-color: #88C425!important;
+}
+
+.btn-info{
+	background-color: #519548!important;
+	border-color: #519548!important;
+}
+
+.grayfont{
+	color: #404040;
+}

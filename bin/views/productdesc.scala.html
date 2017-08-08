@@ -8,10 +8,12 @@
 <br>
 <div class="container">
 @if(isLoggedIn) {   
-     <div class="row">
-     	<h5><p class="text-danger">Información del producto: </h3><br> @defining(productInfo.getIdcategory().toString()) {categoryId => 
+          	 @defining(productInfo.getIdcategory().toString()) {categoryId => 
   		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías}</a>
-     </div>
+     	<br>
+     	<br>
+     	<h5><p class="text-title">Información del producto: </p></h5>
+     
     
     <h5>(Este producto ha sido visitado: @count veces)</h5>
      <div>

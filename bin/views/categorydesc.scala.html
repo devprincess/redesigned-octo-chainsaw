@@ -6,18 +6,17 @@
 <br>
 <br>
 <br>
-<div class="container">
-@if(isLoggedIn) {     
-     <div class="row">
-     	<h5><p class="text-danger">Categoría: @categoryInfo.getName()</p></h5> 
-     	<h5><p>(Esta categoría ha sido vista: @count veces)</p></h5>
-     	<br>
-     	<a href='@routes.LoginController.home()' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías</a>
+<div class="container outer">
+
+@if(isLoggedIn) {    
+     <div class="row inner">
+     	<h5><p class="turquoisefont">Categoría: @categoryInfo.getName()</p>
+     	<p>(Esta categoría ha sido vista: @count veces)</p></h5>
      	<br>
      </div>
-     <br>
-
-
+     <a href='@routes.LoginController.home()' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías</a>
+	<br>
+	<br>
      <div class="grid">
      <h5>
      @for(p <- products) {
@@ -26,7 +25,6 @@
 	 }
 	 </h5>
      </div>
-     
      <br>
      <br>
      <br>
@@ -36,9 +34,11 @@
      <br>
      
 }else{
-	<div class="row">
-		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
+	<div class="row inner">
+		<p>Tu sesión ha terminado por inactividad, <br>
+		<a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
 	</div>
    }
 }
+</div>
 </div>

@@ -32,6 +32,7 @@
 </head>
     <body>
     
+    
      <!-- Responsive navbar -->
 		<nav id="mainNav" class="navbar static-top navbar-toggleable-md navbar-inverse bg-inverse">
 				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,18 +45,30 @@
 					<ul class="nav navbar-nav side-nav">
 						@if(isLoggedIn) {
 	            			<!--  Ver productos -->
-	            			<li class="nav-item active">
+	            			<li class="nav-item">
                     			<a class="nav-link" href="@routes.LoginController.home()"><i class="fa fa-fw fa-product-hunt"></i> Ver Productos </a>
                 			</li>                
-               		<!--  <li class="@("active".when(page == "Profile"))"><a href="@routes.LoginController.home()">Ver productos</a></li>-->    
-	            			<!-- User info -->
+                			<!--  User email -->
 	            			<li class="nav-item">
-	            				<a class= "nav-link" href="@routes.UserController.profile()"><i class="fa fa-fw fa-user"></i> @userInfo.getEmail()</a>
+	            				<a class= "nav-link" href="@routes.UserController.profile()"><i class="fa fa-fw fa-user"></i> Mi perfil </a>
 	            			</li>
-	            			<!-- Carrito de compras -->
+	            			@if(userInfo.getIdrole()==3){
+	            			<!-- Cliente: Carrito de compras -->
 	            			<li class="nav-item">
 	            				<a class="nav-link" href="@routes.ShoppingCartController.getProducts()"><i class="fa fa-fw fa-shopping-cart"></i> Mi carrito</a>
 	            			</li>
+	            			}else{
+	            			 @if(userInfo.getIdrole()==1){
+	            			 <!-- Admin options -->
+	            			 <li class="nav-item">
+	            				<a class="nav-link" href="#"><i class="fa fa-fw fa-shopping-cart"></i> Administrar productos</a>
+	            			</li>
+	            			<li class="nav-item">
+	            				<a class="nav-link" href="#"><i class="fa fa-fw fa-shopping-cart"></i> Administrar categorías</a>
+	            			</li>
+	            			 }
+	            			}
+	            			
 	            			<!-- Salir -->
 	            			<li class="nav-item">
 	            				<a class="nav-link" href="@routes.LoginController.logout()"><i class="fa fa-fw fa-sign-in"></i> Salir</a>
