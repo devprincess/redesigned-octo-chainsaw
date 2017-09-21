@@ -25,6 +25,9 @@ public class Category extends Model {
 	@Constraints.Required
 	private String name;
 
+	@Column(name="nproducts")
+	private Integer nproducts;
+
 	@Column(name="views")
 	private Integer views;
 
@@ -53,6 +56,14 @@ public class Category extends Model {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setNproducts(Integer nproducts){
+		this.nproducts = nproducts;
+	}
+
+	public Integer getNproducts(){
+		return nproducts;
 	}
 
 	public String getUrl() {

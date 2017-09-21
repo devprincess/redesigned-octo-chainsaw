@@ -4,9 +4,6 @@
 
 GET		/							controllers.LoginController.index()
 
-# An example controller showing how to write asynchronous code
-GET     /asynclogout                controllers.AsyncController.asyncLogOut()
-
 #Index of Login
 GET		/index						controllers.LoginController.index()
 
@@ -40,3 +37,4 @@ GET 	/category-list/all			controllers.CategoryListController.list()
 
 GET 	/product-list/all			controllers.ProductListController.list()
 
+GET		/delete-category/:idcategory controllers.CategoryListController.deleteCategory(idcategory)

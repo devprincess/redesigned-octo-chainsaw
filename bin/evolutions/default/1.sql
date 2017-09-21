@@ -6,6 +6,7 @@
 create table category (
   id                            integer auto_increment not null,
   name                          varchar(255),
+  nproducts                     integer,
   views                         integer,
   url                           varchar(255),
   constraint pk_category primary key (id)

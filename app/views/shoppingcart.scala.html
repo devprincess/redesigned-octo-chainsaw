@@ -11,7 +11,10 @@
 <div class="container">
 	@if(isLoggedIn) {
       
+     <p class="desc-shopping-cart">
      Estos son los productos agregados a tu carrito de compras:
+     </p>
+     
      <div class="list-group">
      @if(shopItems.isEmpty) {
      <br>
@@ -25,16 +28,15 @@
      			
               	<div class="form-group">
               	<li class="list-group-item list-group-item-action">
-              	<a href='@routes.ProductController.getProduct(idproduct.toString())'>
+              	<a href='@routes.ProductController.getProduct(idproduct.toString())' class="list-name">
               	
               	@item.getProductName(idproduct).toString()</a>
               	
-              		<div class="col-xs-12">
+              		<div class="form-group-item">
               		<br>
-              			Cantidad:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text">
+              			Cantidad:<input id="" name="" class="form-control form-shop" value="@item.getQuantity.toString()" placeholder="" type="text" maxlength="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+            		<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'><img src="@routes.Assets.at("images/delete.png")" width="28" height="28" /></a>	
             		</div>
-            		<br>
-            		&nbsp;&nbsp;&nbsp;<a href='@routes.ShoppingCartController.deleteProduct(idproduct.toString())'><img src="@routes.Assets.at("images/delete.png")" width="28" height="28" /></a>	
             		}
             		            		
             	</div>

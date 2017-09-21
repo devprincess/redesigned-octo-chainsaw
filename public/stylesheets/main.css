@@ -1,4 +1,7 @@
-/*This one needs to be replicated*/
+/*
+@TODO: THIS CSS HAS ALL THE STYLES, NEED TO BE REPLICATED IN THE app/public/stylesheets/main.css 
+
+This one needs to be replicated*/
 
 #mainNav{
 	background-color:#1B676B!important;
@@ -221,4 +224,34 @@ body{
 	background-color: #EAFDE6!important
 }
 
+.form-group{
+	position: relative;
+}
 
+.form-group .form-group-item{
+	position: absolute;
+	right:50px;
+	
+	display:inline-flex;
+}
+
+.form-group .form-group-item input{
+	width: 60px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-group .form-group-item a{
+	margin-top: 15px;
+}
+
+.new-category-btn{
+	margin-bottom: 20px;
+	width: 320px;	
+}
+
+.delete-icon{
+	margin-right: 20px;
+}

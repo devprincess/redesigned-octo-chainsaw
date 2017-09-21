@@ -10,10 +10,10 @@ INSERT INTO paymethod(name)	VALUES ('Mastercard');
 INSERT INTO shippingmethod(name) VALUES ('UPS');
 INSERT INTO shippingmethod(name) VALUES ('Fedex');
 
-INSERT INTO category(name, views, url) VALUES   ('Books', 0, '/assets/images/books.jpg');
-INSERT INTO category(name, views, url) VALUES	('Electronics', 0, '/assets/images/books.jpg');
-INSERT INTO category(name, views, url) VALUES	('Fashion', 0, '/assets/images/books.jpg');
-INSERT INTO category(name, views, url) VALUES	('Home', 0, '/assets/images/books.jpg');
+INSERT INTO category(name, nproducts,  views, url) VALUES   ('Libros', 4, 0, '/assets/images/books.jpg');
+INSERT INTO category(name, nproducts, views, url) VALUES	('Electronica', 3, 0, '/assets/images/books.jpg');
+INSERT INTO category(name, nproducts, views, url) VALUES	('Moda', 3, 0, '/assets/images/books.jpg');
+INSERT INTO category(name, nproducts, views, url) VALUES	('Hogar', 3, 0, '/assets/images/books.jpg');
 
 INSERT INTO role(name) VALUES ('admin'); -- admin is role 1
 INSERT INTO role(name) VALUES ('employee'); -- employee role 2
