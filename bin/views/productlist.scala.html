@@ -1,0 +1,40 @@
+@(page: String, isLoggedIn: Boolean, userInfo: User, productList: List[Product])
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+@if(isLoggedIn) {     
+          
+     <div class="list-group">
+     @if(productList.isEmpty) {
+     	No hay productos registrados aún.  
+     } else{
+     	
+     	<h5>
+     	<ul>
+     		@for((item, index) <- productList.zipWithIndex){
+     			
+              	<div class="form-group">
+              	<li class="list-group-item list-group-item-action">             	
+              		@item.getName()</a>
+            		           		
+            	</div>
+     			}
+     			</li>
+     		</ul>
+     		
+     	</h5>
+     	
+     }
+     
+     <br>     
+}else{
+	<div class="row">
+		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
+	</div>
+   }
+}

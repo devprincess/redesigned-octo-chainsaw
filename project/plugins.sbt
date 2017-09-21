@@ -10,8 +10,15 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-digest" % "1.1.1")
 addSbtPlugin("com.typesafe.sbt" % "sbt-mocha" % "1.1.0")
 addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.7.0")
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "4.0.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.1.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "3.0.0")
+
+// needed because sbt-twirl depends on twirl-compiler which is only available
+// at repo.spray.io
+resolvers += "spray repo" at "http://repo.spray.io"
+
+addSbtPlugin("io.spray" % "sbt-twirl" % "0.7.0")
+
 
 // Play enhancer - this automatically generates getters/setters for public fields
 // and rewrites accessors of these fields to use the getters/setters. Remove this
