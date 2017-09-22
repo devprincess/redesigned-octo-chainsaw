@@ -12,6 +12,7 @@ addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.4.6")
 addSbtPlugin("com.typesafe.sbt" % "sbt-site" % "0.7.0")
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.1.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "3.0.0")
+addSbtPlugin("com.heroku" % "sbt-heroku" % "1.0.1")
 
 // needed because sbt-twirl depends on twirl-compiler which is only available
 // at repo.spray.io

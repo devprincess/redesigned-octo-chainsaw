@@ -6,6 +6,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 
 scalaVersion := "2.11.7"
 
+herokuAppName in Compile := "secure-mesa-80412"
+
 libraryDependencies ++= Seq(
   javaJdbc,
   cache,
