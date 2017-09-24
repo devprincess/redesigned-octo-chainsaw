@@ -1,3 +1,10 @@
+/META-INF/
+/Module.class
+/actors/
+/controllers/
+/ApplicationTest.class
+/IntegrationTest.class
 /main/
 /models/
-/evolutions/
+/services/
+/views/
