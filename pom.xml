@@ -48,6 +48,12 @@
         </excludes>
       </resource>
       <resource>
+        <directory>app/views</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+      <resource>
         <directory>target/scala-2.11/twirl/main</directory>
         <excludes>
           <exclude>**/*.java</exclude>

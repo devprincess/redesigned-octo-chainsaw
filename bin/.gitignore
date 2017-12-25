@@ -3,11 +3,9 @@
 /controllers/
 /evolutions/
 /logback.xml
-/main/
 /models/
 /production.conf
 /public/
-/router/
 /routes
 /services/
 /views/

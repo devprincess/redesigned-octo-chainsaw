@@ -2,9 +2,13 @@ name := """cdsstore"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean, SbtTwirl)
 
 scalaVersion := "2.11.7"
+
+ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
+
+sourceDirectories in (Compile, TwirlKeys.compileTemplates) := (unmanagedSourceDirectories in Compile).value
 
 herokuAppName in Compile := "secure-mesa-80412"
 
@@ -15,8 +19,6 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.18",
   evolutions
 )
-
-Twirl.settings
 
 EclipseKeys.preTasks := Seq(compile in Compile)
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project. Don't expect Scala IDE

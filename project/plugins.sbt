@@ -18,8 +18,7 @@ addSbtPlugin("com.heroku" % "sbt-heroku" % "1.0.1")
 // at repo.spray.io
 resolvers += "spray repo" at "http://repo.spray.io"
 
-addSbtPlugin("io.spray" % "sbt-twirl" % "0.7.0")
-
+addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.1.1")
 
 // Play enhancer - this automatically generates getters/setters for public fields
 // and rewrites accessors of these fields to use the getters/setters. Remove this
