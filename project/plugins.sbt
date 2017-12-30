@@ -25,6 +25,12 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "3.0.0")
 
 addSbtPlugin("com.heroku" % "sbt-heroku" % "1.0.1")
 
+// Comment to get more information during initialization
+logLevel := Level.Warn
+
+// The Typesafe repository
+resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+
 // needed because sbt-twirl depends on twirl-compiler which is only available
 // at repo.spray.io
 resolvers += "spray repo" at "http://repo.spray.io"
