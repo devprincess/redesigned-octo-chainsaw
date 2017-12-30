@@ -25,8 +25,9 @@
 </dependency>
 <dependency>
     <groupId>org.avaje.ebean</groupId>
-    <artifactId>ebean-querybean</artifactId>
-    <version>9.3.1</version>
+    <artifactId>ebean</artifactId>
+    <version>8.1.1</version>
+    <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>org.avaje.ebeanorm</groupId>
