@@ -77,7 +77,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/avaje-classpath-scanner-api/2.2/avaje-classpath-scanner-api-2.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/avaje-classpath-scanner/2.2.1/avaje-classpath-scanner-2.2.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/avaje-dbmigration/1.2.1/avaje-dbmigration-1.2.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.6.5/jackson-core-2.6.5.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/ebean/ebean-querybean/9.3.1/ebean-querybean-9.3.1.jar" enabled="true" runInBatchMode="false"/>

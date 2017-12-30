@@ -4,6 +4,9 @@
   <artifactId>cdsstore</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>cdsstore</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
   <dependency>
     <groupId>javax.persistence</groupId>
@@ -48,12 +51,6 @@
         </excludes>
       </resource>
       <resource>
-        <directory>app/views</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-      <resource>
         <directory>target/scala-2.11/twirl/main</directory>
         <excludes>
           <exclude>**/*.java</exclude>
@@ -67,21 +64,15 @@
       </resource>
     </resources>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-      
-      <plugin>
-          <groupId>com.google.code.play2-maven-plugin</groupId>
-          <artifactId>play2-maven-plugin</artifactId>
-          <version>1.0.0-rc1</version>
-        </plugin>   
-      
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
     </plugins>
     
   </build>
