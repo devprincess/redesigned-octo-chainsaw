@@ -1,0 +1,15 @@
+/ApplicationTest.class
+/IntegrationTest.class
+/META-INF/
+/Module.class
+/actors/
+/application.conf
+/controllers/
+/evolutions/
+/logback.xml
+/models/
+/production.conf
+/public/
+/routes
+/services/
+/views/
