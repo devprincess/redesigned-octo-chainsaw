@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/cdsstore -Dhttp.port=80 -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=com.mysql.jdbc.Driver -Ddb.default.url="jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_5c26f00447f267b" -Dconfig.file=conf/production.conf
+web: target/universal/stage/bin/cdsstore -Dhttp.port=8080 -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=com.mysql.jdbc.Driver -Ddb.default.url="jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_5c26f00447f267b" -Dconfig.file=conf/production.conf
