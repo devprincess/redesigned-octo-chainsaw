@@ -2,10 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET		/							controllers.LoginController.index()
+GET		/							controllers.LoginController.index(idcategory:String ?= "1")
 
 #Index of Login
-GET		/index						controllers.LoginController.index()
+GET		/index						controllers.LoginController.index(idcategory:String ?= "1")
 
 # Login webpage to the store
 GET 	/login						controllers.LoginController.login()

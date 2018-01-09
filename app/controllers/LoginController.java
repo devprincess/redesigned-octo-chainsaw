@@ -8,7 +8,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 import javax.inject.Inject;
+
+import actors.CategoryActorProtocol;
 import models.Category;
+import models.Product;
 import models.User;
 import play.data.Form;
 import play.data.FormFactory;
@@ -55,8 +58,21 @@ public class LoginController extends Controller{
 	 * Provides the Index page.
 	 * @return The Index page.
 	 */
-	public Result index() {
-		return ok(index.render("Home", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx())));
+	public Result index(String idcategory) {
+		Category c = new Category();
+		List<Category> lc = c.find.all();
+
+		String idString = idcategory;
+
+		if (idcategory == null) {
+			idString="1";
+		}
+
+		Category category = new Category();
+		category.setId(Integer.parseInt(idString));
+		List<Product> productList = Product.find.where().eq("idcategory", category.getId()).findList();
+
+		return ok(index.render("Home", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), lc, productList));
 	}
 
 	/**
@@ -111,7 +127,7 @@ public class LoginController extends Controller{
 
 		usersCounter.decrementAndGet();
 		session().clear();
-		return redirect(routes.LoginController.index());
+		return redirect(routes.LoginController.index("1"));
 	}
 
 	/**
