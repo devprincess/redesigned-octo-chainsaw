@@ -38,3 +38,9 @@ GET 	/category-list/all			controllers.CategoryListController.list()
 GET 	/product-list/all			controllers.ProductListController.list()
 
 GET		/delete-category/:idcategory controllers.CategoryListController.deleteCategory(idcategory)
+
+GET		/edit-category/:idcategory   controllers.CategoryListController.editCategory(idcategory)
+
+POST 	/edit-category				controllers.CategoryListController.updateCategory()
+
+POST 	/							controllers.Application.upload()

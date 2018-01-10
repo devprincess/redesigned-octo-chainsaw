@@ -1,15 +1,18 @@
 @(page: String, isLoggedIn: Boolean, userInfo: User, categories: List[Category], countUsers: Integer)
 
 @Main(page, isLoggedIn, userInfo) {
-<div class="container outer">
+<div class="container-content outer">
 	@if(isLoggedIn) {
 	
 
 	<div class="usercontent inner gallery">
+	
+	@if(userInfo.getIdrole()==3){
+	
      <h5><p class="grayfont"> Bienvenido a JurelApp!</p>
      <p class="grayfont"> Te ofrecemos una variedad de productos clasificados en distintas categorías. </p>
-    
-    <div class="grid">
+     
+     <div class="grid">
      <h5>
      @for(c <- categories) {
      	@defining(c.getId().toString()) {categoryId =>  
@@ -18,6 +21,17 @@
 	 </h5>
      </div>
      </div>
+     
+    }
+
+    @if(userInfo.getIdrole()==1){
+    
+    <h5><p class="grayfont"> Bienvenido/a @userInfo.getName()</p>
+     <p class="grayfont"> En la parte superior encontrarás las opciones para modificar los productos y las categorías. </p>
+    
+    
+    
+    }
     
    } else {
    <div class="usercontent inner">

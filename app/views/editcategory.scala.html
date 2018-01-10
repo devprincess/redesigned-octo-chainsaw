@@ -1,0 +1,40 @@
+@(page: String, isLoggedIn: Boolean, userInfo: User, category: Category, categoryForm: Form[views.formdata.CategoryFormData])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-content">
+@if(isLoggedIn) {     
+    
+     <h3>Editar categoría</h3>
+     
+     <div class="container">
+     	@categoryform(routes.CategoryListController.updateCategory(), categoryForm("name"), categoryForm("url"))
+   	</div>
+     
+     @helper.form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
+    
+    <input type="file" name="picture">
+    
+    <p>
+        <input type="submit">
+    </p>
+    
+}
+     
+     
+     <br>     
+}else{
+	<div class="row">
+		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
+	</div>
+   }
+}
+</div>
+
+

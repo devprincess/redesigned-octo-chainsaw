@@ -64,14 +64,15 @@ public class Secured extends Security.Authenticator {
 		String previousTick = ctx.session().get("userTime");
 
 		if (previousTick != null && !previousTick.equals("")) {
-			long previousT = Long.valueOf(previousTick);
-			long currentT = new Date().getTime();
-			long timeout = Long.valueOf(configuration.getString("sessionTimeOut")) * 1000 * 60;
+			//TODO: if I want to set the session with a time I need to take out these comments
+			//long previousT = Long.valueOf(previousTick);
+			//long currentT = new Date().getTime();
+			//long timeout = Long.valueOf(configuration.getString("sessionTimeOut")) * 1000 * 60;
 
-			if ((currentT - previousT) > timeout) {
+			/*if ((currentT - previousT) > timeout) {
 				ctx.session().clear();
 				return null;
-			}
+			}*/
 		}
 
 		String tickString = Long.toString(new Date().getTime());

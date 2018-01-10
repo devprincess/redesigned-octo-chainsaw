@@ -6,10 +6,9 @@
 <br>
 <br>
 <br>
-<div class="container">
-@if(isLoggedIn) {   
+<div class="container-content">  
           	 @defining(productInfo.getIdcategory().toString()) {categoryId => 
-  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías}</a>
+  		<a href='@routes.CategoryController.getProductsByCategory(categoryId)' class="btn btn-info" role="button" aria-pressed="true">Ver más productos de esta categoría}</a>
 	<br>
 	<br>
     <p>(Este producto ha sido visitado: @count veces)</p>
@@ -27,10 +26,5 @@
      	}	
      	<p align="justify"> @productInfo.getDescription()</p>
      </div>
-     } else {
-   	<div class="row">
-		<a href="@routes.LoginController.login()">Tu sesión se ha terminado por inactividad. Ingresa aquí </a>
-	</div>
-   }
 }
 </div>

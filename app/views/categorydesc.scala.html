@@ -6,22 +6,26 @@
 <br>
 <br>
 <br>
-<div class="container outer">
-
-@if(isLoggedIn) {    
+<div class="container-content-category outer">
+    
      <div class="row inner">
      	<h5><p class="turquoisefont">Categoría: @categoryInfo.getName()</p>
      	<p>(Esta categoría ha sido vista: @count veces)</p></h5>
      	<br>
      </div>
-     <a href='@routes.LoginController.home()' class="btn btn-info" role="button" aria-pressed="true">Regresar a las categorías</a>
+     <a href='@routes.LoginController.index(1.toString())' class="btn btn-info" role="button" aria-pressed="true">Regresar a la página inicial</a>
 	<br>
 	<br>
-     <div class="grid">
+     <div class="grid centered">
      <h5>
      @for(p <- products) {
      	@defining(p.getId().toString()) {productId => 
-  		<div class="grid-item grid-item--width2"><a href='@routes.ProductController.getProduct(productId)'><div class="desc-image"><img border="0" src="@p.getUrl()"/> </div> <div class='blocktitle'><div class="title">@p.getName()}</div></div></a></div>	
+  		<div class="grid-item grid-item--width2">
+  		<a href='@routes.ProductController.getProduct(productId)'><div class="desc-image">
+  		<img border="0" src="@p.getUrl()"/>
+  		 </div>
+  		  <div class='blocktitle'>
+  		  <div class="title">@p.getName()}</div></div></a></div>	
 	 }
 	 </h5>
      </div>
@@ -32,13 +36,8 @@
      <br>
      <br>
      <br>
-     
-}else{
-	<div class="row inner">
-		<p>Tu sesión ha terminado por inactividad, <br>
-		<a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
-	</div>
+    
    }
-}
+
 </div>
 </div>

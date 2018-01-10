@@ -76,6 +76,51 @@ public class CategoryListController extends Controller{
 
 	}
 
+	@Security.Authenticated(Secured.class)
+	public Result editCategory(String idcategory) {
+
+		Category c = new Category();
+		Category  foundCategory = c.find.byId(Integer.parseInt(idcategory));
+
+
+		Form<CategoryFormData> formData = formFactory.form(CategoryFormData.class);
+
+		CategoryFormData cfd = new CategoryFormData(foundCategory);
+		formData = formData.fill(cfd);
+
+		return ok(editcategory.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundCategory, formData));
+
+	}
+
+
+	@Security.Authenticated(Secured.class)
+	public Result updateCategory() {
+
+		Form<CategoryFormData> formDataCategory = formFactory.form(CategoryFormData.class);
+		CategoryFormData categoryData = formDataCategory.bindFromRequest().get();
+
+		Category c = Category.find.where().eq("name", categoryData.getName()).findList().get(0);
+
+		if (Secured.isLoggedIn(ctx())){
+
+			String updStatement = "update category set name = :name, url = :url  where id=:idcategory";
+			Update<User> update = Ebean.createUpdate(User.class, updStatement);
+
+			update.set("name", categoryData.getName());
+			update.set("url", categoryData.getUrl());
+			update.set("idcategory", c.getId());
+			int rows = update.execute();
+
+			formDataCategory = formDataCategory.fill(categoryData);
+			flash("success", "La categoría se ha actualizado exitosamente.");
+		}
+		else{
+			flash("error", "Error: no se pudo actualizar la categoría");
+		}
+		return ok(editcategory.render("Edit Category", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), c ,formDataCategory));
+	}
+
+
 	//@TODO: check on this one
 
 	@Security.Authenticated(Secured.class)

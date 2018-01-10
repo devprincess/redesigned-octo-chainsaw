@@ -1,0 +1,40 @@
+@*************************
+ Simple Category template.
+ 
+ Takes a reverse route, the email field, and the password field from a form. 
+ If form validation fails, then the fields will have Twitter Bootstrap error highlighting.
+ Clients should set the "error" key in flash scope to provide feedback on errors. 
+**************************@
+
+
+@(reverseRoute: play.api.mvc.Call, nameField: Field, urlField:Field)
+
+<div class="row outer">
+    <div class="panel panel-default inner">
+      <div class="panel-heading">
+        <h3 class="panel-title">Editar una categoría</h3>
+      </div>
+      <div class="panel-body">
+        @helper.form(reverseRoute, 'role -> "form") {
+          <fieldset>
+          	<div class="form-group @if(nameField.hasErrors) {has-error}" >
+              <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
+            </div>
+            
+            <div class="form-group @if(urlField.hasErrors) {has-error}" >
+              <input id="@urlField.id" name="@urlField.name" value="@urlField.value.getOrElse("")" class="form-control" placeholder="Url de imagen" type="text">
+            </div>
+
+            	@if(flash.containsKey("success")) {
+           		<div id="error-message" class="text-danger">
+             		@flash.get("success")
+           		</div>
+         		}
+
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Actualizar">
+          </fieldset>
+        }
+       
+    </div>
+  </div>
+</div>
