@@ -1,0 +1,29 @@
+@(page: String, isLoggedIn: Boolean, userInfo: User, productForm: Form[views.formdata.ProductInsertFormData], categoryList: List[Category])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-content">
+@if(isLoggedIn) {     
+    
+     <h3>Crear producto</h3>
+     <div>Por defecto, todos los productos van ingresados en la primera categoría, para editarlo después del registro ir al panel de "administrar productos", click en el producto en el ícono editar.</div>
+     <div class="container">
+     <br>
+     <br>
+     	@createproductform(routes.ProductController.insert(), productForm("name"), productForm("description"), productForm("price"), productForm("idcategory"), categoryList)
+   	</div>
+     
+     <br>     
+}else{
+	<div class="row">
+		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
+	</div>
+   }
+}
+</div>

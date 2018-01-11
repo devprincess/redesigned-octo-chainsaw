@@ -23,10 +23,16 @@ import models.ShoppingCart;
 import models.ShoppingCartItem;
 import models.Stock;
 import models.User;
+import play.data.Form;
+import play.data.FormFactory;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
+import views.formdata.CustomerFormData;
+import views.formdata.LoginFormData;
+import views.formdata.CategoryFormData;
+import views.formdata.CategoryInsertFormData;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
 
@@ -50,6 +56,7 @@ import scala.compat.java8.FutureConverters;
 public class CategoryController extends Controller{
 
 	private final ActorRef categoryActor;
+	@Inject FormFactory formFactory;
 
 	@Inject HttpExecutionContext ec;
 
@@ -121,6 +128,33 @@ public class CategoryController extends Controller{
 				}, ec.current());
 
 		return source;
+	}
+
+	@Security.Authenticated(Secured.class)
+	public Result create() {
+
+		Form<CategoryInsertFormData> formData = formFactory.form(CategoryInsertFormData.class);
+		return ok(insertcategory.render("Insert category", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData));
+
+	}
+
+
+	@Security.Authenticated(Secured.class)
+	public Result insert() {
+
+		Form<CategoryInsertFormData> formData = formFactory.form(CategoryInsertFormData.class);
+		CategoryInsertFormData categoryData = formData.bindFromRequest().get();
+
+		//insert the new category on the list
+		Category cat = new Category();
+		cat.setName(categoryData.getName());
+		cat.setNproducts(0);
+		cat.setUrl("/assets/images/books.jpg");
+		cat.setViews(0);
+		Ebean.save(cat);
+
+		List<Category> listCategories = Category.find.all();
+		return redirect(routes.CategoryListController.list());
 	}
 
 }

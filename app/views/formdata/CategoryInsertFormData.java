@@ -8,7 +8,7 @@ import java.util.List;
 
 import models.Category;
 
-public class CategoryFormData {
+public class CategoryInsertFormData {
 
 	@Required
 	private String name;
@@ -17,14 +17,13 @@ public class CategoryFormData {
 
 	private Integer views;
 
-	@Required
 	private String url;
 
-	public CategoryFormData(){
+	public CategoryInsertFormData(){
 
 	}
 
-	public CategoryFormData(Category c){
+	public CategoryInsertFormData(Category c){
 		this.name = c.getName();
 		this.nproducts = c.getNproducts();
 		this.url = c.getUrl();

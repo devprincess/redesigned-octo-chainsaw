@@ -10,7 +10,7 @@
 @if(isLoggedIn) {     
     
      <div class="new-category-btn" title="Agregar una nueva categoría">
-     	<a href="@routes.LoginController.login()" class="btn btn-lg btn-success btn-block">Agregar una nueva categoría</a>
+     	<a href="@routes.CategoryController.create()" class="btn btn-lg btn-success btn-block">Crear una nueva categoría</a>
      </div>
      <div class="list-group">
      @if(categoryList.isEmpty) {

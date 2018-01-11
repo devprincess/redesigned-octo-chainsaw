@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: User, category: Category, categoryForm: Form[views.formdata.CategoryFormData])
+@(page: String, isLoggedIn: Boolean, userInfo: User, categoryForm: Form[views.formdata.CategoryInsertFormData])
 
 @import bootstrap3._
 
@@ -10,9 +10,11 @@
 <br>
 <div class="container-content">
 @if(isLoggedIn) {     
+    
+     <h3>Crear categoría</h3>
      
      <div class="container">
-     	@categoryform(routes.CategoryListController.updateCategory(category.getId.toString()), categoryForm("name"), categoryForm("url"), category.getId)
+     	@createcategoryform(routes.CategoryController.insert(), categoryForm("name"))
    	</div>
      
      <br>     
@@ -23,5 +25,3 @@
    }
 }
 </div>
-
-

@@ -60,7 +60,7 @@ public class Product extends Model {
 		return description;
 	}
 
-	public void setDescription(String desc) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

@@ -31,11 +31,14 @@ import models.User;
 import play.Environment;
 import play.Logger;
 import play.api.Play;
+import play.data.Form;
+import play.data.FormFactory;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
+import views.formdata.CategoryFormData;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
 
@@ -43,12 +46,16 @@ import play.Configuration;
 
 public class Application extends Controller{
 
+	@Inject FormFactory formFactory;
 
 	//private static Configuration configuration = Play.current().injector().instanceOf(Configuration .class);;
 
-	public Result upload() throws IOException {
+	public Result uploadCategory(String idcategory) throws IOException {
+
+		System.out.println("UPLOAD CATEGORY!!!"+ idcategory);
+
 		Http.MultipartFormData<File> body = request().body().asMultipartFormData();
-		Http.MultipartFormData.FilePart<File> picture = body.getFile("picture");
+		Http.MultipartFormData.FilePart<File> picture = body.getFile("file");
 
 		//Path uploadPath = Environment.simple().rootPath().toPath();
 
@@ -56,6 +63,8 @@ public class Application extends Controller{
 
 		if (picture != null) {
 			String fileName = picture.getFilename();
+
+			System.out.println("Filename is:"+ picture.getFilename());
 			String contentType = picture.getContentType();
 			File file = picture.getFile();
 
@@ -64,10 +73,37 @@ public class Application extends Controller{
 
 			//file.renameTo(new File(myUploadPath, fileName));
 
-			Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", ("copy_" + file.getName())));
+			Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
 			Files.deleteIfExists(file.toPath());
 
-			return ok("file saved as " + file.getAbsolutePath());
+			Category c = new Category();
+			Category  foundCategory = c.find.byId(Integer.parseInt(idcategory));
+
+			//TODO: update url of the uploaded image before showing the form!
+
+			String updStatement = "update category set name = :name, url = :url  where id=:idcategory";
+			Update<Category> update = Ebean.createUpdate(Category.class, updStatement);
+
+			update.set("name", foundCategory.getName());
+
+			System.out.println("name of the category:"+ foundCategory.getName());
+
+			update.set("url", "/assets/images/"+picture.getFilename());
+			update.set("idcategory", idcategory);
+			int rows = update.execute();
+			System.out.println(" rows updated:"+ rows);
+
+			foundCategory.setUrl("/assets/images/"+picture.getFilename());
+
+			Form<CategoryFormData> formData = formFactory.form(CategoryFormData.class);
+
+			CategoryFormData cfd = new CategoryFormData(foundCategory);
+			formData = formData.fill(cfd);
+
+			return ok(editcategory.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundCategory, formData));
+
+
 		} else {
 			flash("error", "Missing file");
 			return badRequest();

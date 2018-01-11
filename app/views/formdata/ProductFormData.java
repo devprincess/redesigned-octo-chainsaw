@@ -6,29 +6,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import models.Category;
+import models.Product;
 
-public class CategoryFormData {
+public class ProductFormData {
 
 	@Required
 	private String name;
-
-	private Integer nproducts;
 
 	private Integer views;
 
 	@Required
 	private String url;
 
-	public CategoryFormData(){
+	public ProductFormData(){
 
 	}
 
-	public CategoryFormData(Category c){
-		this.name = c.getName();
-		this.nproducts = c.getNproducts();
-		this.url = c.getUrl();
-		this.views = c.getViews();
+	public ProductFormData(Product p){
+		this.name = p.getName();
+		this.url = p.getUrl();
+		this.views = p.getViews();
 	}
 
 	public Integer getViews() {
@@ -45,14 +42,6 @@ public class CategoryFormData {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setNproducts(Integer nproducts){
-		this.nproducts = nproducts;
-	}
-
-	public Integer getNproducts(){
-		return nproducts;
 	}
 
 	public String getUrl() {

@@ -5,27 +5,34 @@
  If form validation fails, then the fields will have Twitter Bootstrap error highlighting.
  Clients should set the "error" key in flash scope to provide feedback on errors. 
 **************************@
-
-
-@(reverseRoute: play.api.mvc.Call, nameField: Field, urlField:Field, idcategory: Integer)
+@(reverseRoute: play.api.mvc.Call, nameField: Field, descriptionField: Field, priceField: Field, categoryField: Field, categoryList: List[Category])
 
 <div class="row outer">
     <div class="panel panel-default inner">
       <div class="panel-heading">
-        <h3 class="panel-title">Editar una categoría </h3>
+      
+        <h3 class="panel-title">Agregar producto </h3>
+        
       </div>
       <div class="panel-body">
         @helper.form(reverseRoute, 'role -> "form") {
           <fieldset>
+          	<div>Nombre del producto</div>
           	<div class="form-group @if(nameField.hasErrors) {has-error}" >
               <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
             </div>
             
-            <input class="btn btn-sm btn-success btn-block" type="submit" value="Actualizar nombre">
-            
-            <div class="form-group @if(urlField.hasErrors) {has-error}" >
-              <input id="@urlField.id" name="@urlField.name" value="@urlField.value.getOrElse("")" class="form-control" placeholder="Url de imagen" type="text" readonly>
+          	<div>Descripción</div>
+            <div class="form-group @if(descriptionField.hasErrors) {has-error}" >
+              <input id="@descriptionField.id" name="@descriptionField.name" value="@descriptionField.value.getOrElse("")" class="form-control" placeholder="Descripción" type="text">
             </div>
+            
+          	<div>Precio</div>
+            <div class="form-group @if(nameField.hasErrors) {has-error}" >
+              <input id="@priceField.id" name="@priceField.name" value="@priceField.value.getOrElse("")" class="form-control" placeholder="Precio" type="text">
+            </div>
+           
+            <input class="btn btn-md btn-success btn-block" type="submit" value="Agregar producto">
            
             	@if(flash.containsKey("success")) {
            		<div id="error-message" class="text-danger">
@@ -37,17 +44,6 @@
           </fieldset>
         }
         
-        @helper.form(action = routes.Application.uploadCategory(idcategory.toString()), 'enctype -> "multipart/form-data") {
-    			
-    			<input type="file" name="file">
-    			<p>
-        		<input type="submit" value="Subir imagen">
-    			</p>
-    			
-    			
-    			
-    
-				}
        
     </div>
   </div>

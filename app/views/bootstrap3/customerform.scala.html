@@ -13,28 +13,50 @@
     <div class="panel panel-default inner">
       <div class="panel-heading">
         <h3 class="panel-title">Actualiza tu perfil</h3>
+        <br>
       </div>
       <div class="panel-body">
         @helper.form(reverseRoute, 'role -> "form") {
           <fieldset>
+          	<div>
+          		Nombre y apellidos
+          	</div>
           	<div class="form-group @if(nameField.hasErrors) {has-error}" >
               <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
             </div>
+            <div>
+          		Teléfono de contacto
+          	</div>
             <div class="form-group @if(mobileField.hasErrors) {has-error}" >
               <input id="@mobileField.id" name="@mobileField.name" value="@mobileField.value.getOrElse("")" class="form-control" placeholder="Teléfono de contacto" type="text">
             </div>
+            <div>
+          		Correo electrónico (E-mail)
+          	</div>
             <div class="form-group @if(emailField.hasErrors) {has-error}" >
               <input id="@emailField.id" name="@emailField.name" value="@emailField.value.getOrElse("")" class="form-control" placeholder="Correo electrónico (E-mail)" type="text">
             </div>
+            <div>
+          		Contraseña (Password)
+          	</div>
             <div class="form-group @if(passwordField.hasErrors) {has-error}" >
               <input id="@passwordField.id" name="@passwordField.name" value="@passwordField.value.getOrElse("")" class="form-control" placeholder="Contraseña" type="password">
             </div>
+            <div>
+          		Género: (F:femenino, M:masculino)
+          	</div>
             <div class="form-group @if(genderField.hasErrors) {has-error}" >
               <input id="@genderField.id" name="@genderField.name" value="@genderField.value.getOrElse("")" class="form-control" placeholder="Género" type="text">
             </div>
+             <div>
+          		Fecha de nacimiento (AAAA/MM/DD ó Año/mes/día) 
+          	</div>
             <div class="form-group @if(birthdateField.hasErrors) {has-error}" >
               <input id="@birthdateField.id" name="@birthdateField.name" value="@birthdateField.value.getOrElse("")" class="form-control" placeholder="Fecha de nacimiento" type="text">
             </div>
+             <div>
+          		Dirección de domicilio (A donde llegará tu entrega)
+          	</div>
             <div class="form-group @if(addressField.hasErrors) {has-error}" >
               <input id="@addressField.id" name="@addressField.name" value="@addressField.value.getOrElse("")" class="form-control" placeholder="Dirección de domicilio" type="text">
             </div>

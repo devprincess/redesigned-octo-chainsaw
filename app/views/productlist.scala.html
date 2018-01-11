@@ -7,8 +7,12 @@
 <br>
 <br>
 <div class="container-content">
-@if(isLoggedIn) {     
-          
+@if(isLoggedIn) {
+     
+     <div class="new-category-btn" title="Agregar un nuevo producto">
+     	<a href="@routes.ProductController.create()" class="btn btn-lg btn-success btn-block">Agregar un nuevo producto</a>
+     </div>
+
      <div class="list-group">
      @if(productList.isEmpty) {
      	No hay productos registrados aún.  
@@ -19,7 +23,16 @@
      		@for((item, index) <- productList.zipWithIndex){
      			
               	<div class="form-group">
-              	<li class="list-group-item list-group-item-action">             	
+              	<li class="list-group-item list-group-item-action">
+              	
+              	<div class="delete-icon" title="Borrar producto">
+              			<a href='@routes.ProductListController.deleteProduct(item.getId().toString())' onclick="return confirm('Estas seguro de borrar este producto?')"><img src="@routes.Assets.at("images/delete.png")" width="28" height="28" /></a>
+              		</div>          
+              		
+              		<div class="delete-icon" title="Editar producto">
+              			<a href="@routes.ProductListController.editProduct(item.getId().toString())"><img src="@routes.Assets.at("images/edit.png")" width="28" height="28" /></a>
+              		</div>
+              	             	
               		@item.getName()</a>
             		           		
             	</div>

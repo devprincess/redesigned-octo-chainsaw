@@ -39,8 +39,25 @@ GET 	/product-list/all			controllers.ProductListController.list()
 
 GET		/delete-category/:idcategory controllers.CategoryListController.deleteCategory(idcategory)
 
-GET		/edit-category/:idcategory   controllers.CategoryListController.editCategory(idcategory)
+GET		/edit-category/:idcategory  controllers.CategoryListController.editCategory(idcategory)
 
-POST 	/edit-category				controllers.CategoryListController.updateCategory()
+POST 	/edit-category/:idcategory	controllers.CategoryListController.updateCategory(idcategory)
 
-POST 	/							controllers.Application.upload()
+POST 	/upload-category/:idcategory	controllers.Application.uploadCategory(idcategory)
+
+GET		/create-category				controllers.CategoryController.create()
+
+POST 	/insert-category			controllers.CategoryController.insert()
+
+GET 	/create-product				controllers.ProductController.create()
+
+POST	/insert-product				controllers.ProductController.insert()
+
+GET		/delete-product/:idproduct	controllers.ProductListController.deleteProduct(idproduct)
+
+GET		/edit-product/:idproduct  controllers.ProductListController.editProduct(idproduct)
+
+POST 	/edit-product/:idproduct	controllers.ProductListController.updateProduct(idproduct)
+
+POST 	/upload-product/:idproduct	controllers.Application.uploadProduct(idproduct)
+

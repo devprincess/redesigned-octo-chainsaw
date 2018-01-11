@@ -20,11 +20,16 @@ import akka.util.Timeout;
 import models.Category;
 import models.Product;
 import models.Stock;
+import play.data.Form;
+import play.data.FormFactory;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import scala.compat.java8.FutureConverters;
 import scala.concurrent.duration.Duration;
+import views.formdata.CategoryInsertFormData;
+import views.formdata.ProductInsertFormData;
 import views.html.*;
 
 
@@ -54,6 +59,8 @@ public class ProductController extends Controller{
 
 	private final ActorRef productActor;
 
+	@Inject FormFactory formFactory;
+
 	@Inject HttpExecutionContext ec;
 
 	private final AtomicInteger productViews;
@@ -80,6 +87,44 @@ public class ProductController extends Controller{
 		this.productViews = productViews;
 		this.stockViews = stockViews;
 	}
+
+
+	@Security.Authenticated(Secured.class)
+	public Result create() {
+
+		Form<ProductInsertFormData> formData = formFactory.form(ProductInsertFormData.class);
+
+		List<Category> listCategories = Category.find.all();
+
+		return ok(insertproduct.render("Insert product", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), formData, listCategories));
+
+	}
+
+
+
+	@Security.Authenticated(Secured.class)
+	public Result insert() {
+
+		Form<ProductInsertFormData> formData = formFactory.form(ProductInsertFormData.class);
+		ProductInsertFormData productData = formData.bindFromRequest().get();
+
+		//insert the new product on the list
+		Product prod = new Product();
+		prod.setName(productData.getName());
+		prod.setDescription(productData.getDescription());
+		prod.setPrice(productData.getPrice());
+
+		//default values of the views and the url for a product inserted (new)
+
+		prod.setIdcategory(1);
+		prod.setViews(0);
+		prod.setUrl("/assets/images/camera.jpg");
+		Ebean.save(prod);
+
+		List<Product> listProducts = Product.find.all();
+		return redirect(routes.ProductListController.list());
+	}
+
 
 	/**
 	 * getProduct:

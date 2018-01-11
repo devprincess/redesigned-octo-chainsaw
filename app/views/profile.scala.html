@@ -8,9 +8,10 @@
 <br>
 <br>
 <br>
-<div class="">
+<div class="container-content">
 	@if(isLoggedIn) {
 	  
+	  <div class="container">
      	@customerform(routes.UserController.updateInfo(), 
      					customerForm("name"),
      					customerForm("mobile"), 
@@ -19,7 +20,7 @@
      					customerForm("gender"), 
      					customerForm("birthdate"), 
      					customerForm("address") )
-      
+      </div>
    } else {
    	<div class="row">
    		Tu sesión ha terminado por inactividad. <a href="@routes.LoginController.login()" class="btn btn-primary" role="button">Haz click aquí para ingresar de nuevo</a> .
