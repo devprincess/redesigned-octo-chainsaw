@@ -39,6 +39,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.formdata.CategoryFormData;
+import views.formdata.ProductFormData;
 import views.html.*;
 import scala.compat.java8.FutureConverters;
 
@@ -102,6 +103,67 @@ public class Application extends Controller{
 			formData = formData.fill(cfd);
 
 			return ok(editcategory.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundCategory, formData));
+
+
+		} else {
+			flash("error", "Missing file");
+			return badRequest();
+		}
+	}
+
+
+	public Result uploadProduct(String idproduct) throws IOException {
+
+		System.out.println("UPLOAD PRODUCT!!!"+ idproduct);
+
+		Http.MultipartFormData<File> body = request().body().asMultipartFormData();
+		Http.MultipartFormData.FilePart<File> picture = body.getFile("file");
+
+		//Path uploadPath = Environment.simple().rootPath().toPath();
+
+		//final String uploadFolder = "/public/uploads/";
+
+		if (picture != null) {
+			String fileName = picture.getFilename();
+
+			System.out.println("Filename is:"+ picture.getFilename());
+			String contentType = picture.getContentType();
+			File file = picture.getFile();
+
+			// added lines
+			//	String myUploadPath = configuration.getString("myUploadPath");
+
+			//file.renameTo(new File(myUploadPath, fileName));
+
+			Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			Files.deleteIfExists(file.toPath());
+
+			Product p = new Product();
+			Product foundProduct = p.find.byId(Integer.parseInt(idproduct));
+
+			//TODO: update url of the uploaded image before showing the form!
+
+			String updStatement = "update product set name = :name, url = :url  where id=:idproduct";
+			Update<Product> update = Ebean.createUpdate(Product.class, updStatement);
+
+			update.set("name", foundProduct.getName());
+
+			System.out.println("name of the category:"+ foundProduct.getName());
+
+			update.set("url", "/assets/images/"+picture.getFilename());
+			update.set("idproduct", idproduct);
+			int rows = update.execute();
+			System.out.println(" rows updated:"+ rows);
+
+			foundProduct.setUrl("/assets/images/"+picture.getFilename());
+
+			Form<ProductFormData> formData = formFactory.form(ProductFormData.class);
+
+			ProductFormData cfd = new ProductFormData(foundProduct);
+			formData = formData.fill(cfd);
+
+			return ok(editproduct.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundProduct, formData));
 
 
 		} else {

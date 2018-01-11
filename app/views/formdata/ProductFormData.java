@@ -13,10 +13,47 @@ public class ProductFormData {
 	@Required
 	private String name;
 
+	@Required
+	private String description;
+
+	@Required
+	private Double price;
+
+	@Required
+	private Integer idcategory;
+
 	private Integer views;
 
 	@Required
 	private String url;
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Integer getIdcategory() {
+		return idcategory;
+	}
+
+	public void setIdcategory(Integer idcategory) {
+		this.idcategory = idcategory;
+	}
+
+
 
 	public ProductFormData(){
 
@@ -26,6 +63,9 @@ public class ProductFormData {
 		this.name = p.getName();
 		this.url = p.getUrl();
 		this.views = p.getViews();
+		this.description = p.getDescription();
+		this.price = p.getPrice();
+		this.idcategory = p.getIdcategory();
 	}
 
 	public Integer getViews() {
@@ -51,5 +91,6 @@ public class ProductFormData {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 
 }

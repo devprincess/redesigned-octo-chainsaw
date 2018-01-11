@@ -1,0 +1,70 @@
+@*************************
+ Simple Category template.
+ 
+ Takes a reverse route, the email field, and the password field from a form. 
+ If form validation fails, then the fields will have Twitter Bootstrap error highlighting.
+ Clients should set the "error" key in flash scope to provide feedback on errors. 
+**************************@
+
+
+@(reverseRoute: play.api.mvc.Call, nameField: Field, descriptionField: Field, priceField: Field, idcategoryField: Field,  urlField:Field, idproduct: Integer)
+
+<div class="row outer">
+    <div class="panel panel-default inner">
+      <div class="panel-heading">
+        <h3 class="panel-title">Editar producto </h3>
+      </div>
+      <div class="panel-body">
+        @helper.form(reverseRoute, 'role -> "form") {
+          <fieldset>
+          	<div class="form-group @if(nameField.hasErrors) {has-error}" >
+              <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
+            </div>
+            
+            <div class="form-group @if(descriptionField.hasErrors) {has-error}" >
+              <input id="@descriptionField.id" name="@descriptionField.name" value="@descriptionField.value.getOrElse("")" class="form-control" placeholder="Descripcion" type="text">
+            </div>
+            
+            <div class="form-group @if(priceField.hasErrors) {has-error}" >
+              <input id="@priceField.id" name="@priceField.name" value="@priceField.value.getOrElse("")" class="form-control" placeholder="Precio" type="text">
+            </div>
+            
+            <div class="form-group @if(idcategoryField.hasErrors) {has-error}">
+            	<select id="@idcategoryField.id"  name="@idcategoryField.name">
+            		<option>1</option>
+            		<option>2</option>
+            		<option>3</option>
+            	</select>
+            </div>
+            
+            <input class="btn btn-sm btn-success btn-block" type="submit" value="Actualizar nombre">
+            
+            <div class="form-group @if(urlField.hasErrors) {has-error}" >
+              <input id="@urlField.id" name="@urlField.name" value="@urlField.value.getOrElse("")" class="form-control" placeholder="Url de imagen" type="text" readonly>
+            </div>
+           
+            	@if(flash.containsKey("success")) {
+           		<div id="error-message" class="text-danger">
+             		@flash.get("success")
+           		</div>
+         		}
+
+            
+          </fieldset>
+        }
+        
+        @helper.form(action = routes.Application.uploadProduct(idproduct.toString()), 'enctype -> "multipart/form-data") {
+    			
+    			<input type="file" name="file">
+    			<p>
+        		<input type="submit" value="Subir imagen">
+    			</p>
+    			
+    			
+    			
+    
+				}
+       
+    </div>
+  </div>
+</div>

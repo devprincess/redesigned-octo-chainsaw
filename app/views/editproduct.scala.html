@@ -1,0 +1,27 @@
+@(page: String, isLoggedIn: Boolean, userInfo: User, product: Product, productForm: Form[views.formdata.ProductFormData])
+
+@import bootstrap3._
+
+@Main(page, isLoggedIn, userInfo) {
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-content">
+@if(isLoggedIn) {     
+     
+     <div class="container">
+     	@productform(routes.ProductListController.updateProduct(product.getId.toString()), productForm("name"), productForm("description"), productForm("price"), productForm("idcategory"), productForm("url"), product.getId)
+   	</div>
+     
+     <br>     
+}else{
+	<div class="row">
+		<p>Tu sesión ha terminado por inactividad, <a href="@routes.LoginController.login()">Haz click aquí para iniciar sesión.</a></p>
+	</div>
+   }
+}
+</div>
+
+

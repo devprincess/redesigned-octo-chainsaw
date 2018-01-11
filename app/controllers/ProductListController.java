@@ -81,15 +81,25 @@ public class ProductListController extends Controller {
 		try{
 			ProductFormData ProductData = formDataProduct.bindFromRequest().get();
 
+			System.out.println("Product data:");
+			System.out.println("Name:"+ ProductData.getName());
+			System.out.println("Description data:"+ ProductData.getDescription());
+			System.out.println("Url data:"+ ProductData.getUrl());
+			System.out.println("Price data:"+ ProductData.getPrice());
+			System.out.println("Idcategory data:"+ ProductData.getIdcategory());
+
 			Product p = Product.find.byId(Integer.parseInt(idproduct));
 
 			if (Secured.isLoggedIn(ctx())){
 
-				String updStatement = "update product set name = :name, url = :url  where id=:idproduct";
+				String updStatement = "update product set name = :name, description = :description, price = :price, idcategory = :idcategory, url = :url  where id=:idproduct";
 				Update<Product> update = Ebean.createUpdate(Product.class, updStatement);
 
 				update.set("name", ProductData.getName());
 				update.set("url", ProductData.getUrl());
+				update.set("description", ProductData.getDescription());
+				update.set("price", ProductData.getPrice());
+				update.set("idcategory", ProductData.getIdcategory());
 				update.set("idproduct", p.getId());
 				int rows = update.execute();
 
