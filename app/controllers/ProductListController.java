@@ -68,7 +68,9 @@ public class ProductListController extends Controller {
 		ProductFormData cfd = new ProductFormData(foundProduct);
 		formData = formData.fill(cfd);
 
-		return ok(editproduct.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundProduct, formData));
+		List<Category> lc = Category.find.all();
+
+		return ok(editproduct.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundProduct, foundProduct.getIdcategory() , lc , formData));
 
 	}
 
@@ -77,6 +79,8 @@ public class ProductListController extends Controller {
 	public Result updateProduct(String idproduct) {
 
 		Form<ProductFormData> formDataProduct = formFactory.form(ProductFormData.class);
+
+		List<Category> lc = Category.find.all();
 
 		try{
 			ProductFormData ProductData = formDataProduct.bindFromRequest().get();
@@ -107,10 +111,10 @@ public class ProductListController extends Controller {
 				flash("success", "El producto se ha actualizado exitosamente.");
 			}
 			else{
-				flash("error", "Error: no se pudo actualizar la categoría");
+				flash("error", "Error: no se pudo actualizar la categorÃ­a");
 			}
 
-			return ok(editproduct.render("Edit Product", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), p ,formDataProduct));
+			return ok(editproduct.render("Edit Product", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), p , ProductData.getIdcategory() , lc ,formDataProduct));
 		}
 		catch(Exception e){
 			return badRequest(formDataProduct.errorsAsJson());

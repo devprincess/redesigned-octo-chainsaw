@@ -7,7 +7,7 @@
 **************************@
 
 
-@(reverseRoute: play.api.mvc.Call, nameField: Field, descriptionField: Field, priceField: Field, idcategoryField: Field,  urlField:Field, idproduct: Integer)
+@(reverseRoute: play.api.mvc.Call, nameField: Field, descriptionField: Field, priceField: Field, idcategoryField: Field,  urlField:Field, idproduct: Integer, idCategory: Integer ,categoryList: List[Category])
 
 <div class="row outer">
     <div class="panel panel-default inner">
@@ -29,13 +29,16 @@
               <input id="@priceField.id" name="@priceField.name" value="@priceField.value.getOrElse("")" class="form-control" placeholder="Precio" type="text">
             </div>
             
+            <div>El código actual de categoría de este producto es: @idCategory </div>
+            
             <div class="form-group @if(idcategoryField.hasErrors) {has-error}">
             	<select id="@idcategoryField.id"  name="@idcategoryField.name">
-            		<option>1</option>
-            		<option>2</option>
-            		<option>3</option>
+            		@for(c <- categoryList){ 
+     					<option> @c.getId()</option>
+     				}
             	</select>
             </div>
+            
             
             <input class="btn btn-sm btn-success btn-block" type="submit" value="Actualizar nombre">
             

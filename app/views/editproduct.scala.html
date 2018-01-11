@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: User, product: Product, productForm: Form[views.formdata.ProductFormData])
+@(page: String, isLoggedIn: Boolean, userInfo: User, product: Product, idCategory: Integer, categoryList: List[Category], productForm: Form[views.formdata.ProductFormData])
 
 @import bootstrap3._
 
@@ -12,7 +12,7 @@
 @if(isLoggedIn) {     
      
      <div class="container">
-     	@productform(routes.ProductListController.updateProduct(product.getId.toString()), productForm("name"), productForm("description"), productForm("price"), productForm("idcategory"), productForm("url"), product.getId)
+     	@productform(routes.ProductListController.updateProduct(product.getId.toString()), productForm("name"), productForm("description"), productForm("price"), productForm("idcategory"), productForm("url"), product.getId, idCategory, categoryList)
    	</div>
      
      <br>     

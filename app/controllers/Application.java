@@ -163,7 +163,9 @@ public class Application extends Controller{
 			ProductFormData cfd = new ProductFormData(foundProduct);
 			formData = formData.fill(cfd);
 
-			return ok(editproduct.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundProduct, formData));
+			List<Category> lc = Category.find.all();
+
+			return ok(editproduct.render("Edit Category", Secured.isLoggedIn(ctx()),  Secured.getUserInfo(ctx()), foundProduct, foundProduct.getIdcategory() ,lc ,formData));
 
 
 		} else {

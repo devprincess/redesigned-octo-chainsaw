@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import models.Category;
 import models.Product;
 
 public class ProductFormData {
@@ -26,7 +27,6 @@ public class ProductFormData {
 
 	@Required
 	private String url;
-
 
 
 	public String getDescription() {
@@ -53,8 +53,6 @@ public class ProductFormData {
 		this.idcategory = idcategory;
 	}
 
-
-
 	public ProductFormData(){
 
 	}
@@ -67,6 +65,7 @@ public class ProductFormData {
 		this.price = p.getPrice();
 		this.idcategory = p.getIdcategory();
 	}
+
 
 	public Integer getViews() {
 		return views;
