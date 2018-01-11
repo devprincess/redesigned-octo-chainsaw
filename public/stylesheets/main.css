@@ -362,3 +362,12 @@ div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
 	width: 800px;
 }
 
+.btn-group a{
+	font-family: 'Rubik', sans-serif!important;
+	font-size: 18px!important;
+	color: #e0e0e0!important;
+	font-weight:bold;
+}
+
+
+
