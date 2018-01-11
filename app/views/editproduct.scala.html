@@ -10,6 +10,8 @@
 <br>
 <div class="container-content">
 @if(isLoggedIn) {     
+    
+	<h3>Editar producto </h3>
      
      <div class="container">
      	@productform(routes.ProductListController.updateProduct(product.getId.toString()), productForm("name"), productForm("description"), productForm("price"), productForm("idcategory"), productForm("url"), product.getId, idCategory, categoryList)

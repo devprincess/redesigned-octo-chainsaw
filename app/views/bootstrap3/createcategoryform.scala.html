@@ -12,16 +12,16 @@
 <div class="row outer">
     <div class="panel panel-default inner">
       <div class="panel-heading">
-        <h3 class="panel-title">Crear una categoría </h3>
       </div>
       <div class="panel-body">
         @helper.form(reverseRoute, 'role -> "form") {
           <fieldset>
+          <div>Nombre de la categoría</div>
           	<div class="form-group @if(nameField.hasErrors) {has-error}" >
               <input id="@nameField.id" name="@nameField.name" value="@nameField.value.getOrElse("")" class="form-control" placeholder="Nombre" type="text">
             </div>
             
-            <input class="btn btn-sm btn-success btn-block" type="submit" value="Insertar nombre">
+            <input class="btn btn-md btn-success btn-block" type="submit" value="Insertar Categoría">
            
             	@if(flash.containsKey("success")) {
            		<div id="error-message" class="text-danger">

@@ -11,6 +11,8 @@
 <div class="container-content">
 @if(isLoggedIn) {     
      
+     <h3>Editar categoría</h3>
+     
      <div class="container">
      	@categoryform(routes.CategoryListController.updateCategory(category.getId.toString()), categoryForm("name"), categoryForm("url"), category.getId)
    	</div>
