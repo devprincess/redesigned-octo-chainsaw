@@ -51,9 +51,20 @@
 	            			</li>
 	            			@if(userInfo.getIdrole()==3){
 	            			<!-- Cliente: Carrito de compras -->
+	            			
+	            			<li class="nav-item">
+	            				<a class="nav-link" href="@routes.LoginController.home()"><i class="fa fa-fw fa-shopping-cart"></i> Ver catálogo</a>
+	            			</li>
+	            			
 	            			<li class="nav-item">
 	            				<a class="nav-link" href="@routes.ShoppingCartController.getProducts()"><i class="fa fa-fw fa-shopping-cart"></i> Mi carrito</a>
 	            			</li>
+	            			
+	            			<!-- 
+	            			<li class="nav-item">
+	            				<a class="nav-link" href="@routes.ShoppingCartController.getProducts()"><i class="fa fa-fw fa-file-text"></i> Hacer un Pedido</a>
+	            			</li>
+	            			 -->
 	            			}else{
 	            			 @if(userInfo.getIdrole()==1){
 	            			 <!-- Admin options -->

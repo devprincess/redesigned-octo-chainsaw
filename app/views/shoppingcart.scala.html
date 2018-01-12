@@ -1,4 +1,4 @@
-@(page: String, isLoggedIn: Boolean, userInfo: User, shopItems: List[ShoppingCartItem]))
+@(page: String, isLoggedIn: Boolean, userInfo: User, shopItems: List[ShoppingCartItem])
 
 @import bootstrap3._
 
@@ -8,7 +8,7 @@
 <br>
 <br>
 <br>
-<div class="container">
+<div class="container-content">
 	@if(isLoggedIn) {
       
      <p class="desc-shopping-cart">
@@ -18,7 +18,8 @@
      <div class="list-group">
      @if(shopItems.isEmpty) {
      <br>
-     	No hay productos en tu carrito de compras por el momento. 
+     	<div><img src="@routes.Assets.at("images/warn.png")" width="28" height="28" /> &nbsp;&nbsp; No hay productos en tu carrito de compras por el momento. Te invitamos a ver el catálogo en la barra superior "Ver catálogo". </div>
+		<!--  <div><p class="text-danger">No encuentras aquello que estás buscando y deseas realizar un pedido? <a href="#">Ingresa aquí</a><p></div>-->
      } else{
      	<h5>
      	<form>
@@ -46,6 +47,7 @@
      		
      	</h5>
      	</form>
+     	
      	}
      </div>
    } else {

@@ -1,41 +1,60 @@
+/*
+@TODO: THIS CSS HAS ALL THE STYLES, NEED TO BE REPLICATED IN THE app/public/stylesheets/main.css 
+
+This one needs to be replicated*/
 
 #mainNav{
-	background-color:#1B676B!important;
+	background-color:#253751!important;
+	margin-bottom: 0px!important;
 }
 
 body{
-	background: #000!important;
+	background: #fff!important;
+	padding: 0;
+	margin: 0;
 }
 
 .form-shop{
-width: 5%;
+	width: 5%;
 }
 
 .row{
-margin-left:-50%;
+	margin-left:-50%;
 }
+
+.grid{
+	margin: 0 auto;
+}
+
 
 /* clearfix */
 .grid:after {
-  content: '';
-  display: block;
-  clear: both;
+  	content: '';
+  	display: block;
+  	clear: both;
 }
 
 .grid-item--width2 {
-width: 400px; 
-float:left;
+	width: 400px; 
+	float:left;
 }
 
 
 .grid-item {
-  width: 200px;
-  height: 200px;
-  float: left;
-  background: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
+  	width: 200px;
+  	height: 200px;
+  	float: left;
+  	background: #EAFDE6;
+  	border: 5px solid #EAFDE6;
+  	border-radius: 5px;
 }
+
+.product-desc-img{
+	width: 300px;
+	height: 300px;
+}
+
+
 
 .blocktitle{
 	position: relative;
@@ -46,20 +65,19 @@ float:left;
 	position:absolute;
 	left:50%;
 	margin-right: -50%;
-	transform: translate(-50%, 30%)
+	transform: translate(-50%, 30%);
+	color: #404040;
 }
 
 .desc-image img {
-   height: 100%;
-   width: 100%;
+   	height: 100%;
+   	width: 100%;
 }
 
 .panel-leftside{
-
 	width: 20%;
 	float:left;
 	margin-right: 10px; 
-	
 }
 
 .logo-text{
@@ -96,6 +114,7 @@ float:left;
 
 .inner{
 	margin: 0 auto;
+	width: 100%;
 }
 
 .outer{
@@ -107,7 +126,7 @@ float:left;
 }
 
 .turquoisefont{
-	font-color: #1B676B;
+	color: #1B676B;
 }
 
 .turquoiseback{
@@ -115,7 +134,7 @@ float:left;
 }
 
 .greenfont{
-	font-color: #519548;
+	color: #519548;
 }
 
 .greenback{
@@ -123,7 +142,7 @@ float:left;
 }
 
 .limefont{
-	font-color: #88C425;
+	color: #88C425;
 }
 
 .limeback{
@@ -131,7 +150,7 @@ float:left;
 }
 
 .grellowfont{
-	font-color: #BEF202;
+	color: #BEF202;
 }
 
 .grellowback{
@@ -139,9 +158,223 @@ float:left;
 }
 
 .basefont{
-	font-color: #EAFDE6;
+	color: #EAFDE6;
 }
 
 .baseback{
 	background: #EAFDE6;
 }
+
+.btn-success{
+	background-color: #88C425!important;
+	border-color: #88C425!important;
+}
+
+.btn-info{
+	background-color: #519548!important;
+	border-color: #519548!important;
+}
+
+.btn-danger{
+	background-color: #F64E15!important;
+	border-color:#F64E15!important;
+}
+
+.grayfont{
+	color: #404040;
+}
+
+.align-slidetext{
+	font-family: 'Rubik', sans-serif;
+	font-size: 35px;
+	font-weight: bold;
+	text-shadow: 2px 2px #000;
+}
+
+.centered-text{
+	width: 250px;	
+	display: inline-block;
+}
+
+.centered-text a{
+	font-family: 'Rubik', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.slide1{
+	margin: 0 auto;
+	margin-bottom:20%!important;
+}
+
+
+.navbar-brand{
+	font-family: 'Rubik', sans-serif!important;
+	font-size: 18px!important;
+	color: #e0e0e0!important;
+}
+
+.navbar-brand:hover{
+	color: #fff!important;
+}
+
+.nav-item a{
+	font-family: 'Rubik', sans-serif!important;
+	font-size: 18px!important;
+	color: #e0e0e0!important;
+}
+
+.nav-item a:hover{
+	color: #fff!important;
+}
+
+.bg-info{
+	background-color: #EAFDE6!important
+}
+
+.form-group{
+	position: relative;
+}
+
+.form-group .form-group-item{
+	position: absolute;
+	right:50px;
+	
+	display:inline-flex;
+}
+
+.form-group .form-group-item input{
+	width: 60px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-group .form-group-item a{
+	margin-top: 15px;
+}
+
+.new-category-btn{
+	margin-bottom: 20px;
+	width: 320px;	
+}
+
+.delete-icon{
+	margin-right: 20px;
+}
+
+#myCarousel{
+	width: 1200px;
+	height: 400px;
+	padding: 0%;
+	margin; 0%;
+}
+
+.carousel-inner{
+	height: 400px;
+	padding: 0%;
+	margin: 0 auto;
+}
+
+.homecontainer{
+	width: 100%;
+	padding: 0%;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.container{
+	width: 300px!important;
+}
+
+.container-content{
+	width: 80%!important;
+	margin: 0 auto;
+}
+
+.container-content-category{
+	width: 80%!important;
+	margin: 0 auto;
+}
+
+.intro{
+	width: 100%;
+}
+
+.imgslide1{
+	position:absolute;
+   	top:50%;
+   	left:50%;
+   	margin-top:-25px;
+   	margin-left:-25px;
+}
+
+.carouselitem img{
+	margin: 0 auto;
+}
+
+.busquedawrapper{
+    width: 500px;
+    overflow: hidden; /* will contain if #first is longer than #second */
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.secondelement{
+	width: 100px;
+	overflow: hidden;
+	height: 50px;
+}
+
+.firstelement{
+	width: 300px;
+	padding-top: 5px;
+	float:left; 
+	margin-right: 10px;/* if you don't want #second to wrap below #first */
+}
+
+.categorybar{
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.btnbar{
+	background-color: #253751!important;
+	border-color: #253751!important;
+	height: 45px;
+	width: 120px;
+}
+
+.btn-group{
+	padding-top: 20px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+div.imagetiles div.col-lg-3.col-md-3.col-sm-3.col-xs-6{
+  padding: 0px;
+}
+
+.container2{
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 70px;
+	height: 1000px;
+}
+
+.centered{
+	margin: 0 auto;
+	width: 800px;
+}
+
+.btn-group a{
+	font-family: 'Rubik', sans-serif!important;
+	font-size: 18px!important;
+	color: #e0e0e0!important;
+	font-weight:bold;
+}
+
+
+

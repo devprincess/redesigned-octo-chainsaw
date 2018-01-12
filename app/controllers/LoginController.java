@@ -9,6 +9,9 @@ import java.util.function.Function;
 
 import javax.inject.Inject;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
+
 import actors.CategoryActorProtocol;
 import models.Category;
 import models.Product;
@@ -69,9 +72,19 @@ public class LoginController extends Controller{
 		}
 
 		Category category = new Category();
-		category.setId(Integer.parseInt(idString));
-		List<Product> productList = Product.find.where().eq("idcategory", category.getId()).findList();
+		category = Category.find.byId(Integer.parseInt(idcategory));
 
+		if (category == null){
+			Query<Category> cat = Ebean.createQuery(Category.class, "limit 1");
+			List<Category> list = cat.findList();
+
+			category = list.get(0);
+		}
+		else{
+			category.setId(Integer.parseInt(idString));
+		}
+
+		List<Product> productList = Product.find.where().eq("idcategory", category.getId()).findList();
 		return ok(index.render("Home", Secured.isLoggedIn(ctx()), Secured.getUserInfo(ctx()), lc, productList));
 	}
 
