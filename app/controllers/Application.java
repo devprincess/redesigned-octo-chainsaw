@@ -69,13 +69,15 @@ public class Application extends Controller{
 			String contentType = picture.getContentType();
 			File file = picture.getFile();
 
-			// added lines
-			//	String myUploadPath = configuration.getString("myUploadPath");
+			//TODO: to test on dev use these lines below (local)
+			//Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			//Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
 
-			//file.renameTo(new File(myUploadPath, fileName));
+			//This is for production:
+			///home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/
+			Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/app/public/images/", (picture.getFilename())));
+			Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/app/public/images/", (picture.getFilename())));
 
-			Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
-			Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
 			Files.deleteIfExists(file.toPath());
 
 			Category c = new Category();
@@ -130,13 +132,14 @@ public class Application extends Controller{
 			String contentType = picture.getContentType();
 			File file = picture.getFile();
 
-			// added lines
-			//	String myUploadPath = configuration.getString("myUploadPath");
+			//TODO: to test on dev use these lines below (local)
+			//Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			//Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
 
-			//file.renameTo(new File(myUploadPath, fileName));
-
-			Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
-			Files.copy(file.toPath(), Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+			//This is for production:
+			///home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/
+			Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/app/public/images/", (picture.getFilename())));
+			Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/app/public/images/", (picture.getFilename())));
 			Files.deleteIfExists(file.toPath());
 
 			Product p = new Product();
