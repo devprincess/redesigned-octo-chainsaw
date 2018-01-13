@@ -75,10 +75,14 @@ public class Application extends Controller{
 
 			//This is for production:
 			///home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/
-			Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
-			Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
-
-			Files.deleteIfExists(file.toPath());
+			try{
+				Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
+				Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
+				Files.deleteIfExists(file.toPath());
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
 
 			Category c = new Category();
 			Category  foundCategory = c.find.byId(Integer.parseInt(idcategory));
@@ -138,9 +142,14 @@ public class Application extends Controller{
 
 			//This is for production:
 			///home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/
-			Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
-			Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
-			Files.deleteIfExists(file.toPath());
+			try{
+				Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
+				Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
+				Files.deleteIfExists(file.toPath());
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
 
 			Product p = new Product();
 			Product foundProduct = p.find.byId(Integer.parseInt(idproduct));
