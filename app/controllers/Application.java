@@ -76,11 +76,13 @@ public class Application extends Controller{
 			//This is for production:
 			///home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/
 			try{
-				//Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
+				//Files.deleteIfExists(Paths.get("/home/joana/cdsstore/app/public/images/", (picture.getFilename())));
+
 				System.out.println("File to path:"+file.toPath());
 
-				Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/"+picture.getFilename()));
-				Files.deleteIfExists(file.toPath());
+				File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				file.renameTo(movedFile);
+
 			}
 			catch(Exception e){
 				e.printStackTrace();
@@ -147,9 +149,10 @@ public class Application extends Controller{
 			try{
 
 				System.out.println("File to path:"+file.toPath());
-				//Files.deleteIfExists(Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", (picture.getFilename())));
-				Files.copy(file.toPath(), Paths.get("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/"+picture.getFilename()));
-				Files.deleteIfExists(file.toPath());
+
+				File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				file.renameTo(movedFile);
+
 			}
 			catch(Exception e){
 				e.printStackTrace();
