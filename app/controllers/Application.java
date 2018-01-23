@@ -157,6 +157,8 @@ public class Application extends Controller{
 				//File movedFile = new File("/home/joana/cdsstore/public/images/", picture.getFilename());
 				file.renameTo(movedFile);
 
+				System.out.println("File to path now:"+file.toPath());
+
 			}
 			catch(Exception e){
 				e.printStackTrace();
