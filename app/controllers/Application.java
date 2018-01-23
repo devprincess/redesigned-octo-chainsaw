@@ -204,12 +204,12 @@ public class Application extends Controller{
 
 			System.out.println("name of the category:"+ foundProduct.getName());
 
-			update.set("url", "/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/"+picture.getFilename());
+			update.set("url", "/assets/images/"+picture.getFilename());
 			update.set("idproduct", idproduct);
 			int rows = update.execute();
 			System.out.println(" rows updated:"+ rows);
 
-			foundProduct.setUrl("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/"+picture.getFilename());
+			foundProduct.setUrl("/assets/images/"+picture.getFilename());
 
 			Form<ProductFormData> formData = formFactory.form(ProductFormData.class);
 
