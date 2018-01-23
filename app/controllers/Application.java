@@ -80,9 +80,10 @@ public class Application extends Controller{
 
 				System.out.println("File to path:"+file.toPath());
 
-				File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				//File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				File movedFile = new File("/home/joana/cdsstore/public/images/", picture.getFilename());
 				file.renameTo(movedFile);
-				
+
 				System.out.println("File to path now:"+file.toPath());
 
 			}
@@ -152,7 +153,8 @@ public class Application extends Controller{
 
 				System.out.println("File to path:"+file.toPath());
 
-				File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				//File movedFile = new File("/home/bas/app_add52b3f-a560-49e4-b925-952452c1db3b/public/images/", picture.getFilename());
+				File movedFile = new File("/home/joana/cdsstore/public/images/", picture.getFilename());
 				file.renameTo(movedFile);
 
 			}
